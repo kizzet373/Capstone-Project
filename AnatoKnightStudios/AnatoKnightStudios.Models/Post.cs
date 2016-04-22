@@ -1,0 +1,25 @@
+﻿using System;
+using System.CodeDom;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace AnatoKnightStudios.UI.Models
+{
+    public class Post
+    {
+        public int PostId { get; set; }
+        public int CategoryId { get; set; }
+        public int BlogId { get; set; }
+        public DateTime PostDate { get; set; }
+        public string PostTitle { get; set; }
+        public string PostUserName { get; set; }
+        public string PostContent { get; set; }
+        public List<string> PostImageUrls { get; set; }
+        public List<Tag> PostTags { get; set; }
+        public int Votes { get; set; }
+        public Enum PostStatus { get; set; }
+        //public List<Comment> Comments { get; set; }
+        //public bool IsActive { get; set; }
+    }
+}
