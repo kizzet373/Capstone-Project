@@ -7,8 +7,8 @@
     <ProjectGuid>{0CBA4418-7BD7-40DF-8991-372E39507000}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AnatoKnightStudios.BLL</RootNamespace>
-    <AssemblyName>AnatoKnightStudios.BLL</AssemblyName>
+    <RootNamespace>AnatoknightStudios.BLL</RootNamespace>
+    <AssemblyName>AnatoknightStudios.BLL</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -46,13 +46,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AnatoKnightStudios.Data\AnatoKnightStudios.Data.csproj">
+    <ProjectReference Include="..\AnatoKnightStudios.Data\AnatoknightStudios.Data.csproj">
       <Project>{0aec2f72-e5c9-4eb3-93da-0f10f30707a1}</Project>
-      <Name>AnatoKnightStudios.Data</Name>
+      <Name>AnatoknightStudios.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AnatoKnightStudios.Models\AnatoKnightStudios.Models.csproj">
+    <ProjectReference Include="..\AnatoKnightStudios.Models\AnatoknightStudios.Models.csproj">
       <Project>{c3023840-aa94-4f27-920a-245caf1ceac5}</Project>
-      <Name>AnatoKnightStudios.Models</Name>
+      <Name>AnatoknightStudios.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

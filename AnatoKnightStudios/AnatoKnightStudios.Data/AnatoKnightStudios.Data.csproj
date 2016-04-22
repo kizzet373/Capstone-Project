@@ -7,8 +7,8 @@
     <ProjectGuid>{0AEC2F72-E5C9-4EB3-93DA-0F10F30707A1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AnatoKnightStudios.Data</RootNamespace>
-    <AssemblyName>AnatoKnightStudios.Data</AssemblyName>
+    <RootNamespace>AnatoknightStudios.Data</RootNamespace>
+    <AssemblyName>AnatoknightStudios.Data</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -46,9 +46,9 @@
     <Compile Include="Repos\TagRepo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AnatoKnightStudios.Models\AnatoKnightStudios.Models.csproj">
+    <ProjectReference Include="..\AnatoKnightStudios.Models\AnatoknightStudios.Models.csproj">
       <Project>{c3023840-aa94-4f27-920a-245caf1ceac5}</Project>
-      <Name>AnatoKnightStudios.Models</Name>
+      <Name>AnatoknightStudios.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
