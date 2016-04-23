@@ -3,6 +3,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace AnatoKnightStudios.UI.Models
 {
@@ -14,6 +15,8 @@ namespace AnatoKnightStudios.UI.Models
         public DateTime PostDate { get; set; }
         public string PostTitle { get; set; }
         public string PostUserName { get; set; }
+
+        [AllowHtml]
         public string PostContent { get; set; }
         public List<string> PostImageUrls { get; set; }
         public List<Tag> PostTags { get; set; }

@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AnatoKnightStudios.UI.Models;
 
 namespace AnatoKnightStudios.Data.Repos
 {
-    class BlogRepo
+    public class BlogRepo
     {
+        public List<Post> GetAllPosts()
+        {
+            var posts = new List<Post>();
+            return posts;
+        }
     }
 }
