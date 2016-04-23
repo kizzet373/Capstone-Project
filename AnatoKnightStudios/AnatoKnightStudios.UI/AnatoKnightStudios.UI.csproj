@@ -206,7 +206,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ContributorController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -446,8 +446,8 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
-    <Content Include="Views\Contributor\Index.cshtml" />
-    <Content Include="Views\Contributor\Add.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Blog\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

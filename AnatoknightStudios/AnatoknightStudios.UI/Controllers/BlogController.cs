@@ -8,7 +8,7 @@ using AnatoKnightStudios.UI.Models;
 
 namespace AnatoknightStudios.UI.Controllers
 {
-    public class ContributorController : Controller
+    public class BlogController : Controller
     {
 
         private static List<Post> _repo = new List<Post>();
