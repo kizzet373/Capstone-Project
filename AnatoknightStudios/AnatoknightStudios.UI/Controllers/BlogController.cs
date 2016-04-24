@@ -19,8 +19,8 @@ namespace AnatoknightStudios.UI.Controllers
             var ops = new BlogOperations();
             var posts = ops.GetAllPosts();
 
+            //return View(posts);
             return View(posts);
-            //return View(_repo);
         }
 
         // GET: Create a new post
@@ -79,7 +79,7 @@ namespace AnatoknightStudios.UI.Controllers
         }
 
         [HttpPost]
-
+   
         // Add contributors or users in Roles
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(Post post)
