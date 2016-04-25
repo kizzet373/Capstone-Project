@@ -11,10 +11,13 @@ namespace AnatoknightStudios.Models
     {
         public int PostId { get; set; }
         public int CategoryId { get; set; }
+        // BlogId added
         public int BlogId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public DateTime PostDate { get; set; }
         public string PostTitle { get; set; }
-        public string PostUserName { get; set; }
+        //public string PostUserName { get; set; }
 
         [AllowHtml]
         public string PostContent { get; set; }
