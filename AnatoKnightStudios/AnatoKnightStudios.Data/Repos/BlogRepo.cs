@@ -17,7 +17,7 @@ namespace AnatoknightStudios.Data.Repos
 
         public BlogRepo()
         {
-            conn = ConfigurationManager.ConnectionStrings["AnatoknightStudios"].ConnectionString;
+            conn = ConfigurationManager.ConnectionStrings["Anatoknight Studios"].ConnectionString;
         }
 
         public List<Post> GetAllPosts()
