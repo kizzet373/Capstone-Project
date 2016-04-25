@@ -11,5 +11,6 @@ namespace AnatoknightStudios.Models
         public List<Post> AdminPosts { get; set; }
         public List<Tag> Tags { get; set; }
         public List<Category> Categories { get; set; }
+        public string BlogTitle { get; set; }
     }
 }

@@ -74,6 +74,7 @@
     <Compile Include="Post.cs" />
     <Compile Include="PostStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StaticPage.cs" />
     <Compile Include="Tag.cs" />
   </ItemGroup>
   <ItemGroup>
