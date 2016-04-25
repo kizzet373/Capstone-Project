@@ -34,6 +34,7 @@ namespace AnatoknightStudios.BLL.Ops
 
         public Post Add(Post post)
         {
+            post.PostDate = DateTime.Now;
             _repo.Add(post);
             return post;
         }
