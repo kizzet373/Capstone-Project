@@ -17,7 +17,7 @@ namespace AnatoknightStudios.Data.Repos
 
         public BlogRepo()
         {
-            conn = ConfigurationManager.ConnectionStrings["Anatoknight Studios"].ConnectionString;
+            conn = ConfigurationManager.ConnectionStrings["AnatoknightStudios"].ConnectionString;
         }
 
         public List<Post> GetAllPosts()
@@ -51,7 +51,6 @@ namespace AnatoknightStudios.Data.Repos
                 var parameters = new DynamicParameters();
                 parameters.Add("ID", id);
                 
-                // Need to check SQL Database: table relationship for query below.
                 var post = _cn.Query<Post>("SELECT * " +
                                            "FROM Post " +
                                            "WHERE CategoryId = @ID ", parameters).FirstOrDefault();
@@ -66,7 +65,6 @@ namespace AnatoknightStudios.Data.Repos
                 var parameters = new DynamicParameters();
                 parameters.Add("ID", id);
 
-                // Need to check SQL Database: table relationship for query below.
                 var post = _cn.Query<Post>("SELECT * " +
                                            "FROM Post " +
                                            "WHERE TagId = @ID ", parameters).FirstOrDefault();
@@ -79,13 +77,19 @@ namespace AnatoknightStudios.Data.Repos
             using (var _cn = new SqlConnection(conn))
             {
                 var parameters = new DynamicParameters();
-
-                // add more parameters here
+                
+                parameters.Add("CategoryId", post.CategoryId);
                 parameters.Add("BlogId", post.BlogId);
+                parameters.Add("FirstName", post.FirstName);
+                parameters.Add("LastName", post.LastName);
+                parameters.Add("PostDate", post.PostDate);
+                parameters.Add("PostTitle", post.PostTitle);
                 parameters.Add("PostContent", post.PostContent);
+                parameters.Add("Votes", post.Votes);
 
-                string query = "INSERT INTO Post (BlogId, PostContent) " +
-                               "VALUES (@BlogId, @PostContent) ";
+                string query = "INSERT INTO Post (CategoryId, BlogId, FirstName, LastName, PostDate, " +
+                               "PostTitle, PostContent, Votes) VALUES (@CategoryId, @BlogId, @FirstName, @LastName, " +
+                               "@PostDate, @PostTitle, @PostContent, @Votes) ";
 
                 _cn.Execute(query, parameters);
             }
@@ -109,16 +113,22 @@ namespace AnatoknightStudios.Data.Repos
             {
                 var parameters = new DynamicParameters();
 
-
-                // add more parameters here
                 parameters.Add("ID", postId);
+                parameters.Add("CategoryId", post.CategoryId);
+                parameters.Add("BlogId", post.BlogId);
+                parameters.Add("FirstName", post.FirstName);
+                parameters.Add("LastName", post.LastName);
+                parameters.Add("PostDate", post.PostDate);
                 parameters.Add("PostTitle", post.PostTitle);
-                parameters.Add("PostDate", DateTime.Today);
+                parameters.Add("PostContent", post.PostContent);
+                parameters.Add("Votes", post.Votes);
 
-                string query = "UPDATE Post SET PostTitle=@PostTitle, PostDate=@PostDate" +
-                               "WHERE RequestFormId = @ID";
+                string query = "UPDATE Post SET CategoryId=@CategoryId, BlogId=@BlogId, FirstName=@FirstName, " +
+                               "LastName=@LastName, PostDate=@PostDate, PostTitle=@PostTitle, PostContent=@PostContent, " +
+                               "Votes=@Votes WHERE PostId = @ID";
                 _cn.Execute(query, parameters);
             }
+
         }
     }
 }
