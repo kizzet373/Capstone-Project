@@ -19,11 +19,12 @@ namespace AnatoknightStudios.UI.Controllers
             var ops = new BlogOperations();
             var posts = ops.GetAllPosts();
 
-            //return View(posts);
+            //return View(_repo);
             return View(posts);
         }
 
         // GET: Create a new post
+        //[Authorize(Roles = "Admin")]
         public ActionResult Add()
         {
             return View("Add", new Post());
@@ -31,6 +32,7 @@ namespace AnatoknightStudios.UI.Controllers
 
         // POST: Create a new post
         [HttpPost]
+        //[Authorize(Roles = "Admin")]
         public ActionResult Add(Post post)
         {
             var ops = new BlogOperations();
