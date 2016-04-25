@@ -24,7 +24,7 @@ namespace AnatoknightStudios.UI.Controllers
         }
 
         // GET: Create a new post
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Add()
         {
             return View("Add", new Post());
@@ -32,7 +32,7 @@ namespace AnatoknightStudios.UI.Controllers
 
         // POST: Create a new post
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Contributor")]
         public ActionResult Add(Post post)
         {
             var ops = new BlogOperations();
@@ -63,7 +63,7 @@ namespace AnatoknightStudios.UI.Controllers
         [HttpPost]
 
         // Add contributors or users in Roles
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Contributor")]
         public ActionResult Delete(Post id)
         {
             var ops = new BlogOperations();
