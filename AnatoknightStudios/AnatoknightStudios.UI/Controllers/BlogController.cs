@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using AnatoKnightStudios.BLL.Ops;
-using AnatoKnightStudios.UI.Models;
+using AnatoknightStudios.BLL.Ops;
+using AnatoknightStudios.Models;
 
 namespace AnatoknightStudios.UI.Controllers
 {

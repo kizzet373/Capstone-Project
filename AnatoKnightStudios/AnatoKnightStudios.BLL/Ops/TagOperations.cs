@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AnatoKnightStudios.BLL.Ops
+namespace AnatoknightStudios.BLL.Ops
 {
     class TagOperations
     {

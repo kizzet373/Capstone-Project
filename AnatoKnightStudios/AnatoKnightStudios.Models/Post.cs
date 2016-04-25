@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace AnatoKnightStudios.UI.Models
+namespace AnatoknightStudios.Models
 {
     public class Post
     {

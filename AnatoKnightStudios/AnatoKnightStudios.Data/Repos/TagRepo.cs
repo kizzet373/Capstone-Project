@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AnatoKnightStudios.Data.Repos
+namespace AnatoknightStudios.Data.Repos
 {
     class TagRepo
     {

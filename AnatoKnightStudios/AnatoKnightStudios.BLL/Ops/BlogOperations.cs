@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AnatoKnightStudios.UI.Models;
-using AnatoKnightStudios.Data.Repos;
+using AnatoknightStudios.Models;
+using AnatoknightStudios.Data.Repos;
 
-namespace AnatoKnightStudios.BLL.Ops
+namespace AnatoknightStudios.BLL.Ops
 {
     public class BlogOperations
     {

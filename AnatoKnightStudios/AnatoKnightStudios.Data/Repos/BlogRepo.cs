@@ -6,10 +6,10 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AnatoKnightStudios.UI.Models;
+using AnatoknightStudios.Models;
 using Dapper;
 
-namespace AnatoKnightStudios.Data.Repos
+namespace AnatoknightStudios.Data.Repos
 {
     public class BlogRepo
     {
@@ -17,7 +17,7 @@ namespace AnatoKnightStudios.Data.Repos
 
         public BlogRepo()
         {
-            conn = ConfigurationManager.ConnectionStrings["AnatoKnightStudios"].ConnectionString;
+            conn = ConfigurationManager.ConnectionStrings["AnatoknightStudios"].ConnectionString;
         }
 
         public List<Post> GetAllPosts()
