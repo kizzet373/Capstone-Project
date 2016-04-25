@@ -1,0 +1,52 @@
+﻿@model IEnumerable<AnatoKnightStudios.UI.Models.Post>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Blog List</h2>
+
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Content</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Details</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.Raw(item.PostContent)
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new {id = item.PostId}, new {@class = "btn btn-default"})
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {id = item.PostId}, new {@class = "btn btn-default"})
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new {id = item.PostId}, new {@class = "btn btn-danger"})
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div>
+    @Html.ActionLink("Add new Post", "Add", null, new { @class = "btn btn-success" })
+</div>

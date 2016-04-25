@@ -1,0 +1,36 @@
+﻿@model AnatoKnightStudios.UI.Models.Post
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+
+</head>
+<body>
+<p>
+    <h3 style="color: blue">Hello there, please enter your blog comment!</h3>
+</p>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        @*@Html.TextAreaFor(model => model.PostContent)*@
+        <textarea id="TinyMcePage" name="PostContent"></textarea>
+        <br/>
+        <input type="submit" value="Submit" class="btn btn-default"/>
+    </div>
+
+}
+
+</body>
+</html>
+
+@section scripts {
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/app/tinyMcePage.js"></script>
+}
+
