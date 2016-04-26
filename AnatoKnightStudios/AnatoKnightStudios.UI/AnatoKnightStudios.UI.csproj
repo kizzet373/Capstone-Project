@@ -206,7 +206,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BlogApiController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -243,7 +242,6 @@
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\app\deletePost.js" />
     <Content Include="Scripts\app\TinyMcePage.js" />
-    <Content Include="Scripts\app\webApi.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -465,9 +463,9 @@
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Blog\Add.cshtml" />
-    <Content Include="Views\Shared\_DeletePostModal.cshtml" />
     <Content Include="Views\Blog\Details.cshtml" />
-    <Content Include="Views\Blog\Delete.cshtml" />
+    <Content Include="Views\Shared\_DeletePostModal.cshtml" />
+    <Content Include="Views\Blog\_EditPostModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

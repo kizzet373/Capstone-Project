@@ -52,7 +52,7 @@ namespace AnatoknightStudios.UI.Controllers
         }
 
         // GET: Delete a post
-        public ActionResult Delete(int id)
+        public ActionResult _DeletePostModal(int id)
         {
             var ops = new BlogOperations();
             var post = ops.GetPostById(id);
@@ -64,8 +64,8 @@ namespace AnatoknightStudios.UI.Controllers
         [HttpPost]
 
         // Add contributors or users in Roles
-        [Authorize(Roles = "Admin, Contributor")]
-        public ActionResult Delete(Post id)
+        //[Authorize(Roles = "Admin, Contributor")]
+        public ActionResult DeletePost(Post id)
         {
             var ops = new BlogOperations();
             ops.Delete(id.PostId);

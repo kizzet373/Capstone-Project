@@ -1,9 +1,4 @@
-﻿@model AnatoknightStudios.Models.Post
-
-<button class="btn btn-primary btn-lg" id="btnShowDeletePost">Delete Post</button>
-
-<div class="modal fade" id="deletePostModal" tabindex="-1" role="dialog"
-     aria-labelledby="myModalLabel" aria-hidden="true">
+﻿<div class="modal" id="deletePostModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -16,14 +11,19 @@
                 <div class="row">
                     <table>
                         <tr>
-                            <td>@Html.Raw(Model.PostContent)</td>
+                            <td>Delete this post?</td>
+                            <div id="postToDelete"></div>
                         </tr>
                     </table>
                 </div>
             </div>
             <div class="modal-footer">
+                @Html.BeginForm("DeletePost", "Blog")
+                {
+                <input type="hidden" id ="id" value ="1"/>
                 <button class="btn btn-default" data-dismiss="modal">Cancel</button>
                 <button class="btn btn-primary" id="btnDeletePost">Delete</button>
+                }
             </div>
         </div>
     </div>
