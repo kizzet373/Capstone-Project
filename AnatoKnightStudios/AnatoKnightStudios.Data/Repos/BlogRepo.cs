@@ -72,7 +72,7 @@ namespace AnatoknightStudios.Data.Repos
             }
         }
 
-        public void Add(Post post)
+        public void Add(Post post, string userId)
         {
             using (var _cn = new SqlConnection(conn))
             {
@@ -85,11 +85,15 @@ namespace AnatoknightStudios.Data.Repos
                 parameters.Add("PostDate", post.PostDate);
                 parameters.Add("PostTitle", post.PostTitle);
                 parameters.Add("PostContent", post.PostContent);
+                parameters.Add("IsActive", post.IsActive);
                 parameters.Add("Votes", post.Votes);
 
-                string query = "INSERT INTO Post (CategoryId, BlogId, FirstName, LastName, PostDate, " +
-                               "PostTitle, PostContent, Votes) VALUES (@CategoryId, @BlogId, @FirstName, @LastName, " +
-                               "@PostDate, @PostTitle, @PostContent, @Votes) ";
+                string query = "INSERT INTO Post (CategoryId,  BlogId, PostDate, PostTitle, PostContent, IsActive, FirstName, LastName, Votes) " +
+                               "VALUES (@CategoryId, @BlogId, @PostDate, @PostTitle, @PostContent, @IsActive, @FirstName, @LastName, @Votes) ";
+
+                //string query = "INSERT INTO Post (CategoryId, BlogId, FirstName, LastName, PostDate, " +
+                //               "PostTitle, PostContent, Votes) VALUES (@CategoryId, @BlogId, @FirstName, @LastName, " +
+                //               "@PostDate, @PostTitle, @PostContent, @Votes) ";
 
                 _cn.Execute(query, parameters);
             }

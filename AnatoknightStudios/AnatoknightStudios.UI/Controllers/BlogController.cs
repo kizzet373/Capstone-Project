@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.CommandTrees;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AnatoknightStudios.BLL.Ops;
 using AnatoknightStudios.Models;
+using Microsoft.AspNet.Identity;
 
 namespace AnatoknightStudios.UI.Controllers
 {
@@ -36,8 +38,16 @@ namespace AnatoknightStudios.UI.Controllers
         [Authorize(Roles = "Admin, Contributor")]
         public ActionResult Add(Post post)
         {
+            // hardcoding values
+            post.IsActive = true;
+            post.CategoryId = 1;
+            post.BlogId = 1;
+            post.FirstName = "Tom";
+            post.LastName = "Dwan";
+            post.Votes = 40;
+
             var ops = new BlogOperations();
-            ops.Add(post);
+            ops.Add(post, User.Identity.GetUserId());
             //_repo.Add(post);
             return RedirectToAction("Index");
         }

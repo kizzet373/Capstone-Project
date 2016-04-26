@@ -217,13 +217,9 @@
     <Compile Include="Migrations\201604251418089_InitialCreate.Designer.cs">
       <DependentUpon>201604251418089_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201604251541282_profile.cs" />
-    <Compile Include="Migrations\201604251541282_profile.Designer.cs">
-      <DependentUpon>201604251541282_profile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604260339183_2.cs" />
-    <Compile Include="Migrations\201604260339183_2.Designer.cs">
-      <DependentUpon>201604260339183_2.cs</DependentUpon>
+    <Compile Include="Migrations\201604260339183_profile.cs" />
+    <Compile Include="Migrations\201604260339183_profile.Designer.cs">
+      <DependentUpon>201604260339183_profile.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -494,11 +490,8 @@
     <EmbeddedResource Include="Migrations\201604251418089_InitialCreate.resx">
       <DependentUpon>201604251418089_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604251541282_profile.resx">
-      <DependentUpon>201604251541282_profile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604260339183_2.resx">
-      <DependentUpon>201604260339183_2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604260339183_profile.resx">
+      <DependentUpon>201604260339183_profile.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
