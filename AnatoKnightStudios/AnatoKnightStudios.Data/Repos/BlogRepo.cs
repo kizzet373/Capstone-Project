@@ -26,7 +26,7 @@ namespace AnatoknightStudios.Data.Repos
             {
                 List<Post> posts = new List<Post>();
 
-                posts = _cn.Query<Post>("SELECT * FROM Post ").ToList();
+                //posts = _cn.Query<Post>("SELECT * FROM Post ").ToList();
                 return posts;
             }
         }
