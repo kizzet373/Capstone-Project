@@ -14,6 +14,7 @@ namespace AnatoknightStudios.UI.Controllers
         //private static List<Post> _repo = new List<Post>();
 
         // GET: Contributor
+        //[Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var ops = new BlogOperations();

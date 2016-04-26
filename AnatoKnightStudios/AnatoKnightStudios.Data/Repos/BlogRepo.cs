@@ -101,9 +101,8 @@ namespace AnatoknightStudios.Data.Repos
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("PostId", postId);
-                string query = "DELETE FROM Post " +
-                               "WHERE PostId = @PostId";
-                _cn.Execute(query, parameters);
+
+                _cn.Execute("DeletePost", parameters, commandType: CommandType.StoredProcedure);
             }
         }
 
