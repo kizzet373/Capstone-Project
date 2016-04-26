@@ -27,7 +27,7 @@ namespace AnatoknightStudios.UI.Controllers
         }
 
         // GET: Create a new post
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Contributor")]
         public ActionResult Add()
         {
             return View("Add", new Post());
@@ -42,8 +42,6 @@ namespace AnatoknightStudios.UI.Controllers
             post.IsActive = true;
             post.CategoryId = 1;
             post.BlogId = 1;
-            post.FirstName = "Tom";
-            post.LastName = "Dwan";
             post.Votes = 40;
 
             var ops = new BlogOperations();
@@ -75,10 +73,10 @@ namespace AnatoknightStudios.UI.Controllers
 
         // Add contributors or users in Roles
         [Authorize(Roles = "Admin, Contributor")]
-        public ActionResult Delete(Post id)
+        public ActionResult Delete(Post model)
         {
             var ops = new BlogOperations();
-            ops.Delete(id.PostId);
+            ops.Delete(model.PostId);
 
             return RedirectToAction("Index");
         }

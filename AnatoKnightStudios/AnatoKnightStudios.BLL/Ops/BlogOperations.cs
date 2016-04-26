@@ -31,7 +31,7 @@ namespace AnatoknightStudios.BLL.Ops
         {
             return _repo.GetPostByTag(tagId);
         }
-
+        
         public Post Add(Post post, string userId)
         {
             post.PostDate = DateTime.Now;
