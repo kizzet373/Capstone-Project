@@ -461,6 +461,7 @@
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Blog\Add.cshtml" />
     <Content Include="Views\Shared\_DeletePostModal.cshtml" />
+    <Content Include="Views\Blog\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

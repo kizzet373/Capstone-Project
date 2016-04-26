@@ -99,11 +99,11 @@ namespace AnatoknightStudios.Data.Repos
         {
             using (var _cn = new SqlConnection(conn))
             {
-                var param = new DynamicParameters();
-                param.Add("PostId", postId);
-
-                // Need to write a Stored Procedure
-                _cn.Execute("DeletePost", param, commandType: CommandType.StoredProcedure);
+                var parameters = new DynamicParameters();
+                parameters.Add("PostId", postId);
+                string query = "DELETE FROM Post " +
+                               "WHERE PostId = @PostId";
+                _cn.Execute(query, parameters);
             }
         }
 

@@ -13,7 +13,7 @@ namespace AnatoknightStudios.Data.Repos
 
         public CategoryRepo()
         {
-            conn = ConfigurationManager.ConnectionStrings["Anatoknight Studios"].ConnectionString;
+            conn = ConfigurationManager.ConnectionStrings["AnatoknightStudios"].ConnectionString;
         }
     }
 }
