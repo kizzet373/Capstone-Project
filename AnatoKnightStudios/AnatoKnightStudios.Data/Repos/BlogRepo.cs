@@ -26,7 +26,7 @@ namespace AnatoknightStudios.Data.Repos
             {
                 List<Post> posts = new List<Post>();
 
-                //posts = _cn.Query<Post>("SELECT * FROM Post ").ToList();
+                posts = _cn.Query<Post>("SELECT * FROM Post ").ToList();
                 return posts;
             }
         }
@@ -37,8 +37,9 @@ namespace AnatoknightStudios.Data.Repos
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("ID", id);
-                var post = _cn.Query<Post>(@"Select Post.*,AspNetUsers.FirstName,AspNetUsers.LastName From Post
-inner join AspNetUsers on AspNetUsers.Id = Post.AspNetUserId Where Post.PostId = @ID", parameters).FirstOrDefault();
+                var post = _cn.Query<Post>(@"Select Post.*,AspNetUsers.FirstName,AspNetUsers.LastName 
+                                            From Post inner join AspNetUsers on AspNetUsers.Id = Post.AspNetUserId 
+                                            Where Post.PostId = @ID", parameters).FirstOrDefault();
                 return post;
             }
         }
@@ -50,8 +51,9 @@ inner join AspNetUsers on AspNetUsers.Id = Post.AspNetUserId Where Post.PostId =
                 var parameters = new DynamicParameters();
                 parameters.Add("ID", id);
                 
-                var post = _cn.Query<Post>(@"Select Post.*,AspNetUsers.FirstName,AspNetUsers.LastName From Post
-inner join AspNetUsers on AspNetUsers.Id = Post.AspNetUserId Where CategoryId = @ID ", parameters).FirstOrDefault();
+                var post = _cn.Query<Post>(@"Select Post.*,AspNetUsers.FirstName,AspNetUsers.LastName 
+                                            From Post inner join AspNetUsers on AspNetUsers.Id = Post.AspNetUserId 
+                                            Where CategoryId = @ID ", parameters).FirstOrDefault();
                 return post;
             }
         }
@@ -63,8 +65,9 @@ inner join AspNetUsers on AspNetUsers.Id = Post.AspNetUserId Where CategoryId = 
                 var parameters = new DynamicParameters();
                 parameters.Add("ID", id);
 
-                var post = _cn.Query<Post>(@"Select Post.*,AspNetUsers.FirstName,AspNetUsers.LastName From Post
-inner join AspNetUsers on AspNetUsers.Id = Post.AspNetUserId Where TagId = @ID ", parameters).FirstOrDefault();
+                var post = _cn.Query<Post>(@"Select Post.*,AspNetUsers.FirstName,AspNetUsers.LastName 
+                                            From Post inner join AspNetUsers on AspNetUsers.Id = Post.AspNetUserId 
+                                            Where TagId = @ID ", parameters).FirstOrDefault();
                 return post;
             }
         }

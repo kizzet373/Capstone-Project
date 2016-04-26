@@ -162,7 +162,9 @@ namespace AnatoknightStudios.UI.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    Roles.AddUserToRole(user.UserName, "Contributor");
+                    UserManager.AddToRole(user.Id, "Contributor");
+                    // This is an old way. It does not work.
+                    // Roles.AddUserToRole(user.UserName, "Contributor");
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
