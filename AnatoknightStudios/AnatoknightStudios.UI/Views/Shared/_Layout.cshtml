@@ -35,14 +35,14 @@
             </button>
             <a href="@Url.Action("index", "Home")" id="Logo">
                 <img src='@Url.Content("~/Content/Anatoknightlogo.jpg")' style="height: 100%;"/>
-            </a>})
+            </a>
         </div>
         <div id="navbarLinks" class="navbar-collapse collapse" style="height: 100%">
             <ul id="navStaticPages" class="nav navbar-nav" style="height: 124px">
                 <li class="public">@Html.ActionLink("CONTRIBUTOR BLOG", "Index", "Home")</li>
                 <li class="public">@Html.ActionLink("CONTACT", "About", "Home")</li>
                 <li class="public">@Html.ActionLink("DONATE", "Contact", "Home")</li>
-                @if (!Request.IsAuthenticated)
+                @if (User.IsInRole("Admin"))
                 {
                     <li class="admin" style="height: 100%; padding-top: 38px;">@Html.ActionLink("ADMIN TOOLS", "Index", "Blog")</li>
                 }
@@ -61,6 +61,7 @@
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
+
 @RenderSection("scripts", required: false)
 </body>
 </html>

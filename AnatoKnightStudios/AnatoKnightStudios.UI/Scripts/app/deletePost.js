@@ -1,12 +1,10 @@
 ﻿$(document).ready(function () {
-    $('#btnShowDeletePost').click(function () {
+    $('.btnShowDeletePost').click(function () {
         $('#deletePostModal').modal('show');
+        $('#postToDelete').text($(this).siblings("input").val());
     });
 
-    $('#btnDeletePost').click(function () {
-        var Post = {};
-        
-
-    });
+    $('#inputDeletePost').click(function() {
+        var post = {};
 
 });

@@ -7,7 +7,6 @@
 <h2>Delete</h2>
 
 <div>
-    <h4>Post</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -47,7 +46,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PostDate)
+            @*@Html.DisplayFor(model => model.PostDate)*@
+            @Model.PostDate.ToString("MM-dd-yyyy")
         </dd>
 
         <dt>
@@ -80,8 +80,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="btn btn-danger" /> 
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-success" })
         </div>
     }
 </div>

@@ -24,6 +24,6 @@ namespace AnatoknightStudios.Models
         public int Votes { get; set; }
         public Enum PostStatus { get; set; }
         //public List<Comment> Comments { get; set; }
-        //public bool IsActive { get; set; }
+        public bool IsActive { get; set; }
     }
 }

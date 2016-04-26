@@ -13,7 +13,7 @@ namespace AnatoknightStudios.UI.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201604251541282_profile"; }
+            get { return "201604260339183_profile"; }
         }
         
         string IMigrationMetadata.Source

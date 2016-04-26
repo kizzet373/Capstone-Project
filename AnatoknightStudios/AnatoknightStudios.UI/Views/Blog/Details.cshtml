@@ -46,7 +46,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PostDate)
+            @*@Html.DisplayFor(model => model.PostDate)*@
+            @Model.PostDate.ToString("MM-dd-yyyy")
         </dd>
 
         <dt>
@@ -62,7 +63,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PostContent)
+            @*@Html.DisplayFor(model => model.PostContent)*@
+            @Html.Raw(Model.PostContent)
         </dd>
 
         <dt>
@@ -76,6 +78,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PostId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PostId }, new { @class = "btn btn-danger" }) 
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-success" })
 </p>

@@ -3,7 +3,7 @@ namespace AnatoknightStudios.UI.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _2 : DbMigration
+    public partial class profile : DbMigration
     {
         public override void Up()
         {

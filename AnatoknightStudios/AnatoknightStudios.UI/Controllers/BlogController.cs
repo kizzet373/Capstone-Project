@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.CommandTrees;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AnatoknightStudios.BLL.Ops;
 using AnatoknightStudios.Models;
+using Microsoft.AspNet.Identity;
 
 namespace AnatoknightStudios.UI.Controllers
 {
@@ -36,8 +38,16 @@ namespace AnatoknightStudios.UI.Controllers
         [Authorize(Roles = "Admin, Contributor")]
         public ActionResult Add(Post post)
         {
+            // hardcoding values
+            post.IsActive = true;
+            post.CategoryId = 1;
+            post.BlogId = 1;
+            post.FirstName = "Tom";
+            post.LastName = "Dwan";
+            post.Votes = 40;
+
             var ops = new BlogOperations();
-            ops.Add(post);
+            ops.Add(post, User.Identity.GetUserId());
             //_repo.Add(post);
             return RedirectToAction("Index");
         }
@@ -52,7 +62,7 @@ namespace AnatoknightStudios.UI.Controllers
         }
 
         // GET: Delete a post
-        public ActionResult Delete(int id)
+        public ActionResult _DeletePostModal(int id)
         {
             var ops = new BlogOperations();
             var post = ops.GetPostById(id);
@@ -64,8 +74,8 @@ namespace AnatoknightStudios.UI.Controllers
         [HttpPost]
 
         // Add contributors or users in Roles
-        [Authorize(Roles = "Admin, Contributor")]
-        public ActionResult Delete(Post id)
+        //[Authorize(Roles = "Admin, Contributor")]
+        public ActionResult DeletePost(Post id)
         {
             var ops = new BlogOperations();
             ops.Delete(id.PostId);
