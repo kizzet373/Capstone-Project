@@ -48,10 +48,11 @@ namespace AnatoknightStudios.UI.Models
 
     public class LoginViewModel
     {
+        // changed from Email to User Name
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "User Name")]
+        //[EmailAddress]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -64,6 +65,21 @@ namespace AnatoknightStudios.UI.Models
 
     public class RegisterViewModel
     {
+
+        // changed from Email to User Name
+        [Required]
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
+
+        // adding first name and last name
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
