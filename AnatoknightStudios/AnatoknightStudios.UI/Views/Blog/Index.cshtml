@@ -13,26 +13,28 @@
 <div>
     <table class="table table-striped">
         <thead>
-            <tr>
-                <th>Content</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th>Details</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
+        <tr>
+            <th>Post Title</th>
+            <th>Content</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
         </thead>
 
         @foreach (var item in Model)
         {
             <tr>
                 <td>
+                    @item.PostTitle
+                </td>
+                <td>
                     @Html.Raw(item.PostContent)
                 </td>
-                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
