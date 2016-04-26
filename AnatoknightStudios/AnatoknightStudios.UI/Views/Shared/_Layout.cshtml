@@ -1,30 +1,51 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Anatoknight Studios</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/BodyStyles.css" />
+    <style>
+        #navStaticPages li {
+            height: 100%;padding-top: 38px;
+        }
+        #navbarLinks a {           
+            font-weight: bold;
+        }
+        .public a {
+            text-shadow: 1px 1px blue;
+            color:turquoise !important;
+        }
+        .admin a {
+            color:limegreen !important;
+        }
+    </style>
 </head>
-<body>
-    @RenderSection("_DeletePostModal", required: false)
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+<body style="padding: 125px;">
+@RenderSection("_DeletePostModal", required: false)
+<div class="navbar navbar-inverse navbar-fixed-top" style="background-color: black; height: 125px;">
+    <div class="container" style="max-width: 1170px; height: 100%; background-color: black;">
+        <div class="navbar-header" style="height: 100%">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="height: 100%">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("Anatoknight Studios", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+            <a href="@Url.Action("index", "Home")" id="Logo">
+                <img src='@Url.Content("~/Content/Anatoknightlogo.jpg")' style="height: 100%;"/>
+            </a>})
         </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                <li>@Html.ActionLink("Index", "Index", "Blog")</li>
+        <div id="navbarLinks" class="navbar-collapse collapse" style="height: 100%">
+            <ul id="navStaticPages" class="nav navbar-nav" style="height: 124px">
+                <li class="public">@Html.ActionLink("CONTRIBUTOR BLOG", "Index", "Home")</li>
+                <li class="public">@Html.ActionLink("CONTACT", "About", "Home")</li>
+                <li class="public">@Html.ActionLink("DONATE", "Contact", "Home")</li>
+                @if (!Request.IsAuthenticated)
+                {
+                    <li class="admin" style="height: 100%; padding-top: 38px;">@Html.ActionLink("ADMIN TOOLS", "Index", "Blog")</li>
+                }
             </ul>
             @Html.Partial("_LoginPartial")
         </div>
