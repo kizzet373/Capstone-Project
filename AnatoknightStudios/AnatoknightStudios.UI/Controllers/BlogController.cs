@@ -13,30 +13,34 @@ namespace AnatoknightStudios.UI.Controllers
     public class BlogController : Controller
     {
 
-        //private static List<Post> _repo = new List<Post>();
-
         // GET: Contributor
         //[Authorize(Roles = "Admin")]
-        public ActionResult Index()
+        public ActionResult AdminBlog()
         {
-            var ops = new BlogOperations();
-            var posts = ops.GetAllPosts();
+            var blogOps = new BlogOperations();
+            var blog = new Blog();
+            blog.Posts = blogOps.GetAllPosts();
 
-            //return View(_repo);
-            return View(posts);
+            var catOps = new CategoryOperations();
+            blog.Categories = catOps.GetAllActiveCategories();
+
+            var tagOps = new TagOperations();
+            blog.Tags = tagOps.GetAllTags();
+
+            return View(blog);
         }
 
         // GET: Create a new post
         [Authorize(Roles = "Admin, Contributor")]
-        public ActionResult Add()
+        public ActionResult AddPost()
         {
-            return View("Add", new Post());
+            return View("AddPost", new Post());
         }
 
         // POST: Create a new post
         [HttpPost]
         [Authorize(Roles = "Admin, Contributor")]
-        public ActionResult Add(Post post)
+        public ActionResult AddPost(Post post)
         {
             // hardcoding values
             post.IsActive = true;
@@ -47,11 +51,11 @@ namespace AnatoknightStudios.UI.Controllers
             var ops = new BlogOperations();
             ops.Add(post, User.Identity.GetUserId());
             //_repo.Add(post);
-            return RedirectToAction("Index");
+            return RedirectToAction("AdminBlog");
         }
 
         // GET: Details of post
-        public ActionResult Details(int id)
+        public ActionResult PostDetails(int id)
         {
             var ops = new BlogOperations();
             Post post = new Post();
@@ -78,7 +82,7 @@ namespace AnatoknightStudios.UI.Controllers
             var ops = new BlogOperations();
             ops.Delete(postId);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("AdminBlog");
         }
 
 
@@ -97,7 +101,7 @@ namespace AnatoknightStudios.UI.Controllers
         {
             var ops = new BlogOperations();
             ops.Edit(post.PostId, post);
-            return RedirectToAction("Index");
+            return RedirectToAction("AdminBlog");
         }
     }
 }
