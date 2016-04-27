@@ -7,6 +7,7 @@
 <div class="row">
     <div class="col-xs-12">
         @Html.Partial("_DeletePostModal")
+        @Html.Partial("_AddPostModal")
     </div>
 </div>
 
@@ -48,7 +49,6 @@
                 <td>
                     <button id="btnShowDeletePost" class="btn btn-danger btnShowDeletePost">Delete</button>
                     @Html.Hidden("postId", item.PostId, new {id="postId"})
-                    @*@Html.ActionLink("Delete", "_DeletePostModal", new { id = item.PostId }, new { @class = "btn btn-danger", data_toggle = "modal", data_target = "#deletePostModal" })*@
                 </td>
             </tr>
         }
@@ -56,9 +56,11 @@
 </div>
 
 <div>
-    @Html.ActionLink("Add new Post", "Add", null, new { @class = "btn btn-success" })
+    <button id="btnShowAddPost" class="btn btn-success">Add new Post</button>
+    @*@Html.ActionLink("Add new Post", "Add", null, new {@class = "btn btn-success"})*@
 </div>
 
 @section scripts{
     <script type="text/javascript" src="~/Scripts/app/deletePost.js"></script>
+    <script type="text/javascript" src="~/Scripts/app/addPost.js"></script>
 }

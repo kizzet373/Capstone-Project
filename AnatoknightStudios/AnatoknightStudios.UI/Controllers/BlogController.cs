@@ -120,5 +120,29 @@ namespace AnatoknightStudios.UI.Controllers
             ops.Edit(post.PostId, post);
             return RedirectToAction("AdminBlog");
         }
+
+        // GET: Create a new post
+        [Authorize(Roles = "Admin, Contributor")]
+        public ActionResult Add()
+        {
+            return View("_AddPostModal");
+        }
+
+        //// POST: Create a new post
+        //[HttpPost]
+        //[Authorize(Roles = "Admin, Contributor")]
+        //public ActionResult Add(Post post)
+        //{
+        //    // hardcoding values
+        //    post.IsActive = true;
+        //    post.CategoryId = 1;
+        //    post.BlogId = 1;
+        //    post.Votes = 40;
+
+        //    var ops = new BlogOperations();
+        //    ops.Add(post, User.Identity.GetUserId());
+        //    //_repo.Add(post);
+        //    return RedirectToAction("Index");
+        //}
     }
 }
