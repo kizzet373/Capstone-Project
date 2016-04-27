@@ -26,29 +26,29 @@ namespace AnatoknightStudios.UI.Controllers
             return View(posts);
         }
 
-        // GET: Create a new post
-        [Authorize(Roles = "Admin, Contributor")]
-        public ActionResult Add()
-        {
-            return View("Add", new Post());
-        }
+        //// GET: Create a new post
+        //[Authorize(Roles = "Admin, Contributor")]
+        //public ActionResult Add()
+        //{
+        //    return View("Add", new Post());
+        //}
 
-        // POST: Create a new post
-        [HttpPost]
-        [Authorize(Roles = "Admin, Contributor")]
-        public ActionResult Add(Post post)
-        {
-            // hardcoding values
-            post.IsActive = true;
-            post.CategoryId = 1;
-            post.BlogId = 1;
-            post.Votes = 40;
+        //// POST: Create a new post
+        //[HttpPost]
+        //[Authorize(Roles = "Admin, Contributor")]
+        //public ActionResult Add(Post post)
+        //{
+        //    // hardcoding values
+        //    post.IsActive = true;
+        //    post.CategoryId = 1;
+        //    post.BlogId = 1;
+        //    post.Votes = 40;
 
-            var ops = new BlogOperations();
-            ops.Add(post, User.Identity.GetUserId());
-            //_repo.Add(post);
-            return RedirectToAction("Index");
-        }
+        //    var ops = new BlogOperations();
+        //    ops.Add(post, User.Identity.GetUserId());
+        //    //_repo.Add(post);
+        //    return RedirectToAction("Index");
+        //}
 
         // GET: Details of post
         public ActionResult Details(int id)
@@ -99,5 +99,29 @@ namespace AnatoknightStudios.UI.Controllers
             ops.Edit(post.PostId, post);
             return RedirectToAction("Index");
         }
+
+        // GET: Create a new post
+        [Authorize(Roles = "Admin, Contributor")]
+        public ActionResult Add()
+        {
+            return View("_AddPostModal");
+        }
+
+        //// POST: Create a new post
+        //[HttpPost]
+        //[Authorize(Roles = "Admin, Contributor")]
+        //public ActionResult Add(Post post)
+        //{
+        //    // hardcoding values
+        //    post.IsActive = true;
+        //    post.CategoryId = 1;
+        //    post.BlogId = 1;
+        //    post.Votes = 40;
+
+        //    var ops = new BlogOperations();
+        //    ops.Add(post, User.Identity.GetUserId());
+        //    //_repo.Add(post);
+        //    return RedirectToAction("Index");
+        //}
     }
 }

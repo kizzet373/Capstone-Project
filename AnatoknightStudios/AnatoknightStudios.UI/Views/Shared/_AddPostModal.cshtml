@@ -1,0 +1,35 @@
+﻿@*@model AnatoknightStudios.Models.Post*@
+<div class="modal" id="addPostModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Create Post</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <h3 style="color: blue">Hello there, please enter your blog post!</h3>
+                </p>
+
+                <div class="form-group">
+                    <label>Post Title</label>
+                    <input/>
+                </div>
+
+        <div>
+            <textarea id="TinyMcePage" name="PostContent"></textarea>
+            <br />
+            <input type="submit" value="Submit" class="btn btn-default" />
+        </div>
+    </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/app/tinyMcePage.js"></script>
+}
