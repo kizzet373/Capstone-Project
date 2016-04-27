@@ -22,14 +22,19 @@ namespace AnatoknightStudios.BLL.Ops
             return _repo.GetPostById(postId);
         }
 
-        public Post GetPostByCategory(int categoryId)
+        public List<Post> GetPostByBlogId(int blogId)
         {
-            return _repo.GetPostByCategory(categoryId);
+            return _repo.GetPostsByBlogId(blogId);
+        } 
+
+        public List<Post> GetPostByCategory(int categoryId)
+        {
+            return _repo.GetPostsByCategory(categoryId);
         }
 
-        public Post GetPostByTag(int tagId)
+        public List<Post> GetPostByTag(int tagId)
         {
-            return _repo.GetPostByTag(tagId);
+            return _repo.GetPostsByTag(tagId);
         }
         
         public Post Add(Post post, string userId)

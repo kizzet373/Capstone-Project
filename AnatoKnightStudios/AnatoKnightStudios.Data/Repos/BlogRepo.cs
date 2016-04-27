@@ -24,9 +24,7 @@ namespace AnatoknightStudios.Data.Repos
         {
             using (var _cn = new SqlConnection(conn))
             {
-                List<Post> posts = new List<Post>();
-
-                posts = _cn.Query<Post>("SELECT * FROM Post ").ToList();
+                var posts = _cn.Query<Post>("SELECT * FROM Post ").ToList();
                 return posts;
             }
         }
@@ -44,31 +42,45 @@ namespace AnatoknightStudios.Data.Repos
             }
         }
 
-        public Post GetPostByCategory(int id)
+        public List<Post> GetPostsByCategory(int id)
         {
             using (var _cn = new SqlConnection(conn))
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("ID", id);
-                
-                var post = _cn.Query<Post>(@"Select Post.*,AspNetUsers.FirstName,AspNetUsers.LastName 
+
+                var posts = _cn.Query<Post>(@"Select Post.*,AspNetUsers.FirstName,AspNetUsers.LastName 
                                             From Post inner join AspNetUsers on AspNetUsers.Id = Post.AspNetUserId 
-                                            Where CategoryId = @ID ", parameters).FirstOrDefault();
-                return post;
+                                            Where CategoryId = @ID ", parameters).ToList();
+                return posts;
             }
         }
 
-        public Post GetPostByTag(int id)
+        public List<Post> GetPostsByTag(int id)
         {
             using (var _cn = new SqlConnection(conn))
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("ID", id);
 
-                var post = _cn.Query<Post>(@"Select Post.*,AspNetUsers.FirstName,AspNetUsers.LastName 
+                var posts = _cn.Query<Post>(@"Select Post.*,AspNetUsers.FirstName,AspNetUsers.LastName 
                                             From Post inner join AspNetUsers on AspNetUsers.Id = Post.AspNetUserId 
-                                            Where TagId = @ID ", parameters).FirstOrDefault();
-                return post;
+                                            Where TagId = @ID ", parameters).ToList();
+                return posts;
+            }
+        }
+
+        public List<Post> GetPostsByBlogId(int id)
+        {
+            using (var _cn = new SqlConnection(conn))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("ID", id);
+
+                var posts = _cn.Query<Post>(@"Select Post.*,AspNetUsers.FirstName,AspNetUsers.LastName 
+                                            From Post inner join AspNetUsers on AspNetUsers.Id = Post.AspNetUserId 
+                                            Where BlogId = @ID ", parameters).ToList();
+                return posts;
             }
         }
 
@@ -78,13 +90,8 @@ namespace AnatoknightStudios.Data.Repos
             {
                 var parameters = new DynamicParameters();
 
-                parameters.Add("ID", userId);
-               
-
-
                 parameters.Add("CategoryId", post.CategoryId);
-                parameters.Add("BlogId", post.BlogId);
-                
+                parameters.Add("BlogId", post.BlogId);       
                 parameters.Add("PostDate", post.PostDate);
                 parameters.Add("PostTitle", post.PostTitle);
                 parameters.Add("PostContent", post.PostContent);
