@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Core.Common.CommandTrees;
 using System.Linq;
 using System.Web;
+using System.Web.DynamicData;
 using System.Web.Mvc;
 using AnatoknightStudios.BLL.Ops;
 using AnatoknightStudios.Models;
@@ -13,19 +14,35 @@ namespace AnatoknightStudios.UI.Controllers
     public class BlogController : Controller
     {
 
-        // GET: Contributor
+        // GET: Admin Blog
         //[Authorize(Roles = "Admin")]
         public ActionResult AdminBlog()
         {
             var blogOps = new BlogOperations();
             var blog = new Blog();
-            blog.Posts = blogOps.GetAllPosts();
+            blog.Posts = blogOps.GetPostByBlogId(1);
+            //var catOps = new CategoryOperations();
+            //blog.Categories = catOps.GetAllActiveCategories();
 
-            var catOps = new CategoryOperations();
-            blog.Categories = catOps.GetAllActiveCategories();
+            //var tagOps = new TagOperations();
+            //blog.Tags = tagOps.GetAllTags();
 
-            var tagOps = new TagOperations();
-            blog.Tags = tagOps.GetAllTags();
+            return View(blog);
+        }
+
+        // GET: Contributor Blog
+        //[Authorize(Roles = "Contributor" || "Admin")]
+        public ActionResult ContributorBlog()
+        {
+            var blogOps = new BlogOperations();
+            var blog = new Blog();
+            blog.Posts = blogOps.GetPostByBlogId(2);
+
+            //var catOps = new CategoryOperations();
+            //blog.Categories = catOps.GetAllActiveCategories();
+
+            //var tagOps = new TagOperations();
+            //blog.Tags = tagOps.GetAllTags();
 
             return View(blog);
         }
@@ -42,7 +59,7 @@ namespace AnatoknightStudios.UI.Controllers
         [Authorize(Roles = "Admin, Contributor")]
         public ActionResult AddPost(Post post)
         {
-            // hardcoding values
+            //hardcoding values
             post.IsActive = true;
             post.CategoryId = 1;
             post.BlogId = 1;

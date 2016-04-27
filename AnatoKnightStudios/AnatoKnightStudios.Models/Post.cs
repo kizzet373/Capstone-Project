@@ -16,6 +16,7 @@ namespace AnatoknightStudios.Models
         public string LastName { get; set; }
         public DateTime PostDate { get; set; }
         public string PostTitle { get; set; }
+        public string AspNetUserId { get; set; }
 
         [AllowHtml]
         public string PostContent { get; set; }
