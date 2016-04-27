@@ -460,11 +460,13 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
-    <Content Include="Views\Blog\Index.cshtml" />
-    <Content Include="Views\Blog\Add.cshtml" />
-    <Content Include="Views\Blog\Details.cshtml" />
+    <Content Include="Views\Blog\AdminBlog.cshtml" />
+    <Content Include="Views\Blog\AddPost.cshtml" />
+    <Content Include="Views\Blog\PostDetails.cshtml" />
     <Content Include="Views\Shared\_DeletePostModal.cshtml" />
     <Content Include="Views\Shared\_AddPostModal.cshtml" />
+    <Content Include="Views\Blog\_EditPostModal.cshtml" />
+    <Content Include="Views\Blog\ContributorBlog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,10 +17,7 @@
         .public a {
             text-shadow: 1px 1px blue;
             color:turquoise !important;
-        }
-        .admin a {
-            color:limegreen !important;
-        }
+        }        
     </style>
 </head>
 <body style="padding: 125px;">
@@ -34,21 +31,21 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="@Url.Action("index", "Home")" id="Logo">
+            <a href="@Url.Action("AdminBlog", "Blog")" id="Logo">
                 <img src='@Url.Content("~/Content/Anatoknightlogo.jpg")' style="height: 100%;"/>
             </a>
         </div>
         <div id="navbarLinks" class="navbar-collapse collapse" style="height: 100%">
             <ul id="navStaticPages" class="nav navbar-nav" style="height: 124px">
-                @if (User.IsInRole("Contributer") || User.IsInRole("Admin"))
+                @if (User.IsInRole("Contributor") || User.IsInRole("Admin"))
                 {
-                    <li class="public">@Html.ActionLink("CONTRIBUTOR BLOG", "Index", "Home")</li>
+                    <li class="public">@Html.ActionLink("CONTRIBUTOR BLOG", "AdminBlog", "Blog")</li>
                 }
                 <li class="public">@Html.ActionLink("CONTACT", "About", "Home")</li>
                 <li class="public">@Html.ActionLink("DONATE", "Contact", "Home")</li>
                 @if (User.IsInRole("Admin"))
                 {
-                    <li class="admin" style="height: 100%; padding-top: 38px;">@Html.ActionLink("ADMIN TOOLS", "Index", "Blog")</li>
+                    <li class="admin" style="height: 100%; padding-top: 38px;">@Html.ActionLink("ADMIN TOOLS", "AdminBlog", "Blog")</li>
                 }
             </ul>
             @Html.Partial("_LoginPartial")

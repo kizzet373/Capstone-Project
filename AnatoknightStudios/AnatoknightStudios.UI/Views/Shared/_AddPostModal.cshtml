@@ -1,5 +1,4 @@
-﻿@*@model AnatoknightStudios.Models.Post*@
-<div class="modal" id="addPostModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+﻿<div class="modal" id="addPostModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -15,10 +14,9 @@
 
                 <div class="form-group">
                     <label>Post Title</label>
-                    <input/>
                 </div>
 
-        <div>
+        <div id="formId">
             <textarea id="TinyMcePage" name="PostContent"></textarea>
             <br />
             <input type="submit" value="Submit" class="btn btn-default" />
@@ -29,7 +27,3 @@
         </div>
     </div>
 </div>
-@section scripts {
-    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
-    <script src="~/Scripts/app/tinyMcePage.js"></script>
-}
