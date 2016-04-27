@@ -48,7 +48,7 @@
                 <td>
                     <button id="btnShowDeletePost" class="btn btn-danger btnShowDeletePost">Delete</button>
                     @Html.Hidden("postId", item.PostId, new {id="postId"})
-                    @*@Html.ActionLinkDelete", "_DeletePostModal", new { id = item.PostId }, new { @class = "btn btn-danger", data_toggle = "modal", data_target = "#deletePostModal" })*@
+                    @*@Html.ActionLink("Delete", "_DeletePostModal", new { id = item.PostId }, new { @class = "btn btn-danger", data_toggle = "modal", data_target = "#deletePostModal" })*@
                 </td>
             </tr>
         }

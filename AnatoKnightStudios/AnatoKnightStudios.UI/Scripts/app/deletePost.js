@@ -1,10 +1,7 @@
-﻿$(document).ready(function () {
-    $('.btnShowDeletePost').click(function () {
+﻿$(document).ready(function() {
+    $('.btnShowDeletePost').click(function() {
         $('#deletePostModal').modal('show');
-        $('#postToDelete').text($(this).siblings("input").val());
+        $('#Id').val($(this).siblings("input").val());
     });
 
-    $('#inputDeletePost').click(function() {
-        var post = {};
-
-});
+  });

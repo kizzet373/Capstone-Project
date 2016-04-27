@@ -73,10 +73,10 @@ namespace AnatoknightStudios.UI.Controllers
 
         // Add contributors or users in Roles
         [Authorize(Roles = "Admin, Contributor")]
-        public ActionResult DeletePost(int postId)
+        public ActionResult DeletePost(int Id)
         {
             var ops = new BlogOperations();
-            ops.Delete(postId);
+            ops.Delete(Id);
 
             return RedirectToAction("Index");
         }
