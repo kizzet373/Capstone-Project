@@ -86,7 +86,7 @@ namespace AnatoknightStudios.UI.Controllers
         }
 
 
-        public ActionResult Edit(int id)
+        public ActionResult EditPost(int id)
         {
             var ops = new BlogOperations();
             var post = ops.GetPostById(id);
@@ -97,7 +97,7 @@ namespace AnatoknightStudios.UI.Controllers
    
         // Add contributors or users in Roles
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit(Post post)
+        public ActionResult EditPost(Post post)
         {
             var ops = new BlogOperations();
             ops.Edit(post.PostId, post);
