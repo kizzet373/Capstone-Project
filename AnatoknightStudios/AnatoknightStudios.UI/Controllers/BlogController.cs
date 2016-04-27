@@ -19,7 +19,7 @@ namespace AnatoknightStudios.UI.Controllers
         public ActionResult AdminBlog()
         {
             var blogOps = new BlogOperations();
-            var blog = new Blog();
+            var blog = new Blog() { BlogId = 1 };
             blog.Posts = blogOps.GetPostByBlogId(1);
             //var catOps = new CategoryOperations();
             //blog.Categories = catOps.GetAllActiveCategories();
@@ -35,7 +35,7 @@ namespace AnatoknightStudios.UI.Controllers
         public ActionResult ContributorBlog()
         {
             var blogOps = new BlogOperations();
-            var blog = new Blog();
+            var blog = new Blog() {BlogId = 2};
             blog.Posts = blogOps.GetPostByBlogId(2);
 
             //var catOps = new CategoryOperations();
@@ -49,9 +49,9 @@ namespace AnatoknightStudios.UI.Controllers
 
         // GET: Create a new post
         [Authorize(Roles = "Admin, Contributor")]
-        public ActionResult AddPost()
+        public ActionResult AddPost(int blogId, int categoryId)
         {
-            return View("AddPost", new Post());
+            return View("AddPost", new Post() {BlogId = blogId, CategoryId = categoryId});
         }
 
         // POST: Create a new post
@@ -62,13 +62,16 @@ namespace AnatoknightStudios.UI.Controllers
             //hardcoding values
             post.IsActive = true;
             post.CategoryId = 1;
-            post.BlogId = 1;
             post.Votes = 40;
 
             var ops = new BlogOperations();
             ops.Add(post, User.Identity.GetUserId());
             //_repo.Add(post);
-            return RedirectToAction("AdminBlog");
+            if (post.BlogId == 1)
+            {
+                return RedirectToAction("AdminBlog");
+            }           
+            return RedirectToAction("ContributorBlog");
         }
 
         // GET: Details of post

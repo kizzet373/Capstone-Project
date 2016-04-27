@@ -10,6 +10,10 @@
     </div>
 </div>
 
+<div>
+    @Html.ActionLink("Add new Post", "AddPost", new { blogId = Model.BlogId, categoryId = 1 }, new { @class = "btn btn-success" })
+</div>
+
 <div class="BlackDiv" style="padding: 30px; border-radius: 20px;">
     <div style="border-radius: 20px; padding: 10px; background-color: whitesmoke; margin: 0;">
         <table class="table table-striped" style="background-color: whitesmoke;">
@@ -44,7 +48,7 @@
                         @Html.ActionLink("Details", "PostDetails", new { id = item.PostId }, new { @class = "btn btn-default" })
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.PostId }, new { @class = "btn btn-default" })
+                        @Html.ActionLink("Edit", "EditPost", new { id = item.PostId }, new { @class = "btn btn-default" })
                     </td>
                     <td>
                         <button id="btnShowDeletePost" class="btn btn-danger btnShowDeletePost">Delete</button>
@@ -57,9 +61,6 @@
     </div>
 </div>
 <br />
-<div>
-    @Html.ActionLink("Add new Post", "AddPost", null, new { @class = "btn btn-success" })
-</div>
 
 @section scripts{
     <script type="text/javascript" src="~/Scripts/app/deletePost.js"></script>

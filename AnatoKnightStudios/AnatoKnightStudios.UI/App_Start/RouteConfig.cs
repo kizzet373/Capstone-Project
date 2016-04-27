@@ -16,7 +16,7 @@ namespace AnatoknightStudios.UI
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Blog", action = "AdminBlog", id = UrlParameter.Optional }
             );
         }
     }
