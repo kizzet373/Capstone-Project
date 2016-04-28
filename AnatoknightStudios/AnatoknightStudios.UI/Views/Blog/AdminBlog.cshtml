@@ -18,7 +18,6 @@
 
 <center>
     <div style="width: 100%;">
-        @*@Html.ActionLink("Add new Post", "AddPost", null, new { @class = "btn btn-success", @style = "margin: auto;" })*@
         <button id="btnShowAddPost" class="btn btn-success btnShowAddPost">Add new Post</button>
         @Html.Hidden("BlogId", Model.BlogId, new { id = "BlogId" })
         </div>
@@ -63,7 +62,6 @@
                     <td>
                         <button id="btnShowDeletePost" class="btn btn-danger btnShowDeletePost">Delete</button>
                         @Html.Hidden("postId", item.PostId, new { id = "postId" })
-                        @*@Html.ActionLinkDelete", "_DeletePostModal", new { id = item.PostId }, new { @class = "btn btn-danger", data_toggle = "modal", data_target = "#deletePostModal" })*@
                     </td>
                 </tr>
             }

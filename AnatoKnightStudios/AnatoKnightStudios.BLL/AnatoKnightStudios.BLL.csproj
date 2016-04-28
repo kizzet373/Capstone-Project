@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Ops\BlogOperations.cs" />
     <Compile Include="Ops\CategoryOperations.cs" />
+    <Compile Include="Ops\StaticPageOperations.cs" />
     <Compile Include="Ops\TagOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

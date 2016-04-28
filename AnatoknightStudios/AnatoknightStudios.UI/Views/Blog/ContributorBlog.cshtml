@@ -16,11 +16,13 @@
     </div>
 </div>
 
-<div>
-    @*@Html.ActionLink("Add new Post", "AddPost", new { blogId = Model.BlogId, categoryId = 1 }, new { @class = "btn btn-success" })*@
-    <button id="btnShowAddPost" class="btn btn-success btnShowAddPost">Add new Post</button>
-    @Html.Hidden("BlogId", Model.BlogId, new { id = "BlogId" })
-</div>
+<center>
+    <div>
+        @*@Html.ActionLink("Add new Post", "AddPost", new { blogId = Model.BlogId, categoryId = 1 }, new { @class = "btn btn-success" })*@
+        <button id="btnShowAddPost" class="btn btn-success btnShowAddPost">Add new Post</button>
+        @Html.Hidden("BlogId", Model.BlogId, new {id = "BlogId"})
+    </div>
+</center>
 
 <div class="BlackDiv" style="padding: 30px; border-radius: 20px;">
     <div style="border-radius: 20px; padding: 10px; background-color: whitesmoke; margin: 0;">
