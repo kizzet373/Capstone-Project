@@ -10,8 +10,16 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-xs-12">
+        @Html.Partial("_AddPostModal")
+    </div>
+</div>
+
 <div>
-    @Html.ActionLink("Add new Post", "AddPost", new { blogId = Model.BlogId, categoryId = 1 }, new { @class = "btn btn-success" })
+    @*@Html.ActionLink("Add new Post", "AddPost", new { blogId = Model.BlogId, categoryId = 1 }, new { @class = "btn btn-success" })*@
+    <button id="btnShowAddPost" class="btn btn-success btnShowAddPost">Add new Post</button>
+    @Html.Hidden("BlogId", Model.BlogId, new { id = "BlogId" })
 </div>
 
 <div class="BlackDiv" style="padding: 30px; border-radius: 20px;">
@@ -64,4 +72,7 @@
 
 @section scripts{
     <script type="text/javascript" src="~/Scripts/app/deletePost.js"></script>
+    <script type="text/javascript" src="~/Scripts/app/addPost.js"></script>
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/app/tinyMcePage.js"></script>
 }

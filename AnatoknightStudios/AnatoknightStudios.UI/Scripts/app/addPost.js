@@ -1,6 +1,7 @@
 ﻿$(document).ready(function() {
     $('#btnShowAddPost').click(function() {
         $('#addPostModal').modal('show');
+        $('#BlogId').val($(this).siblings("input").val());
     });
 
     $("#addPostModal").on("shown", function() {
