@@ -20,6 +20,7 @@
     <div style="width: 100%;">
         @*@Html.ActionLink("Add new Post", "AddPost", null, new { @class = "btn btn-success", @style = "margin: auto;" })*@
         <button id="btnShowAddPost" class="btn btn-success btnShowAddPost">Add new Post</button>
+        @Html.Hidden("blogId", Model.BlogId, new { blogId = "blogId", categoryId="categoryId" })
         </div>
 </center>
 

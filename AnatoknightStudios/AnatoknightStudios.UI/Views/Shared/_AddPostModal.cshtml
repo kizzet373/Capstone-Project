@@ -12,18 +12,23 @@
                     <h3 style="color: blue">Hello there, please enter your blog post!</h3>
                 </p>
 
-                <div class="form-group">
-                    <label>Post Title</label>
-                </div>
+                <form action="/Blog/AddPost" method="post">
+                    <div class="form-group">
+                        <label>Post Title</label>
+                        <input type="text" id="PostTitle" name="PostTitle"/>
+                    </div>
 
-        <div id="formId">
-            <textarea id="TinyMcePage" name="PostContent"></textarea>
-            <br />
-            <input type="submit" value="Submit" class="btn btn-default" />
-        </div>
-    </div>
+                    <div id="formId">
+                        <textarea id="TinyMcePage" name="PostContent" ID="PostContent"></textarea>
+                        <br />
+                        <input type="hidden" id="blogId" name="Id" />
+                        <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary" id="Submit">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>  
             <div class="modal-footer">
             </div>
-        </div>
     </div>
 </div>
