@@ -67,8 +67,10 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PostContent, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PostContent, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PostContent, "", new { @class = "text-danger" })
+
+                <textarea id="TinyMcePage" name="PostContent">@Model.PostContent</textarea>
+                @*@Html.EditorFor(model => model.PostContent, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PostContent, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -101,3 +103,9 @@
 <div>
     @Html.ActionLink("Back to List", "AdminBlog")
 </div>
+
+
+@section scripts {
+<script src="~/Scripts/tinymce/tinymce.min.js"></script>
+<script src="~/Scripts/app/tinyMcePage.js"></script>
+}
