@@ -22,9 +22,9 @@ namespace AnatoknightStudios.BLL.Ops
             return _repo.GetPageById(pageId);
         }
 
-        public StaticPage Add(StaticPage page, int pageId)
+        public StaticPage Add(StaticPage page)
         {
-            _repo.AddPage(page, pageId);
+            _repo.AddPage(page);
             return page;
         }
     }

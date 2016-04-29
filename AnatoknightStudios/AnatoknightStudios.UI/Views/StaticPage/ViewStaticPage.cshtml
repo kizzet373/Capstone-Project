@@ -9,7 +9,7 @@
 <div class="BlackDiv" style="padding: 30px; border-radius: 20px;">
     <div style="border-radius: 20px; padding: 10px; background-color: whitesmoke; margin: 0;">
         <p>@Model.Title</p>
-        <p>@Model.Content</p>
+        <p>@Html.Raw(Model.PageContent)</p>
         <p>@Model.PageId</p>
         <p>@Model.IsActive</p>
     </div>

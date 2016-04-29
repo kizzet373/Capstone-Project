@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace AnatoknightStudios.Models
 {
@@ -10,7 +11,8 @@ namespace AnatoknightStudios.Models
     {
         public int PageId { get; set; }
         public string Title { get; set; }
-        public string Content { get; set; }
+        [AllowHtml]
+        public string PageContent { get; set; }
         public bool IsActive { get; set; }
     }
 }
