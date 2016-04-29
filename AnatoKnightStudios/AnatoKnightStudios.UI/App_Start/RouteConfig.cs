@@ -15,11 +15,11 @@ namespace AnatoknightStudios.UI
 
             //map route for static pages, passes controller action to index
             //dont know if need yet
-            //routes.MapRoute(
-            //        name: "StaticPage",
-            //        url: "StaticPage/{page}",
-            //        defaults: new { controller = "StaticPage", action = "Index" }
-            //        );
+            routes.MapRoute(
+                    name: "StaticPage",
+                    url: "StaticPage/{action}/{pageId}",
+                    defaults: new { controller = "StaticPage", action = "StaticPage", id = UrlParameter.Optional }
+                    );
 
             routes.MapRoute(
                 name: "Default",

@@ -29,13 +29,13 @@ namespace AnatoknightStudios.Data.Repos
             }
         }
 
-        public StaticPage GetPageById(int id)
+        public StaticPage GetPageById(int pageId)
         {
             using (var _cn = new SqlConnection(conn))
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("ID", id);
-                var page = _cn.Query<StaticPage>(@"SELECT * From StaticPage Where PostId = @ID", parameters).FirstOrDefault();
+                parameters.Add("ID", pageId);
+                var page = _cn.Query<StaticPage>(@"SELECT * From StaticPage Where PageId = @ID", parameters).FirstOrDefault();
                 return page;
             }
         }

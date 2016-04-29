@@ -19,7 +19,7 @@ namespace AnatoknightStudios.BLL.Ops
 
         public StaticPage GetPageById(int pageId)
         {
-            return _repo.GetPageById(1);
+            return _repo.GetPageById(pageId);
         }
 
         public StaticPage Add(StaticPage page, int pageId)

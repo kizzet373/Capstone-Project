@@ -474,7 +474,8 @@
     <Content Include="Views\Blog\_EditPostModal.cshtml" />
     <Content Include="Views\Blog\ContributorBlog.cshtml" />
     <Content Include="Views\Blog\EditPost.cshtml" />
-    <Content Include="Views\StaticPage\StaticPage.cshtml" />
+    <Content Include="Views\StaticPage\ViewStaticPage.cshtml" />
+    <Content Include="Views\StaticPage\CreateStaticPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
