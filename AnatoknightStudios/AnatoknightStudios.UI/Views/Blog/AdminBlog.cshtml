@@ -4,6 +4,14 @@
     ViewBag.Title = "AdminBlog";
 }
 
+<style>
+     .center {
+         margin: auto;
+         width: 60%;
+     }
+</style>
+
+
 <div class="row">
     <div class="col-xs-12">
         @Html.Partial("_DeletePostModal")
@@ -17,13 +25,11 @@
 </div>
 
     <div class="row">
-        <div class="col-md-12" style="padding: 20px; border-radius: 20px;">
-            <center>
+        <div align="center" class="col-md-12" style="padding: 20px; border-radius: 20px;">
                 <div style="width: 100%;">
                     <button id="btnShowAddPost" class="btn btn-success btnShowAddPost">Add new Post</button>
                     @Html.Hidden("BlogId", Model.BlogId, new { id = "BlogId" })
                 </div>
-            </center>
         </div>
     </div>
 
@@ -41,19 +47,19 @@
                         @Html.Hidden("postId", item.PostId, new { id = "postId" })
                     </div>
 
-                    <div>
+                    <div class="center">
                         @item.PostDate.ToString("MM-dd-yyyy")
                     </div>
-                    <div>
+                    <div class="center">
                         @item.FirstName
                         @item.LastName
                     </div>
 
-                    <div>
+                    <div class="center">
                         <label>Post Title: &nbsp; </label><b>@item.PostTitle</b>
                     </div>
 
-                    <div>
+                    <div class="center">
                         @Html.Raw(item.PostContent)
                     </div>
                 </div>
