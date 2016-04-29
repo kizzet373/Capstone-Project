@@ -4,9 +4,6 @@
     ViewBag.Title = "CreateStaticPage";
 }
 
-<h2>CreateStaticPage</h2>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +12,7 @@
 </head>
 <body>
     <p>
-        <h3 style="color: red">Hello there, please enter your page information!</h3>
+        <h3 style="color: black">Hello there, please enter your page information!</h3>
     </p>
     @using (Html.BeginForm("CreateStaticPage", "StaticPage", null, FormMethod.Post, new { id = "addPage" }))
     {
@@ -27,7 +24,7 @@
         </div>
 
         <div>
-            <textarea id="TinyMcePage" name="PageContent"></textarea>
+            <textarea id="TinyMcePage" name="Content"></textarea>
             <br />
             <input type="submit" value="Submit" class="btn btn-default" />
         </div>

@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
 using System.Web.Mvc;
 using AnatoknightStudios.BLL.Ops;
 using AnatoknightStudios.Models;
 using Microsoft.AspNet.Identity;
-using System.Web.Security;
 
 namespace AnatoknightStudios.UI.Controllers
 {
@@ -18,28 +14,25 @@ namespace AnatoknightStudios.UI.Controllers
         {
             var pageOps = new StaticPageOperations();
             var page = new StaticPage();
-            pageId = 1;
-            page.Title = pageOps.GetPageById(pageId).ToString();
-            page.Content = pageOps.GetPageById(pageId).ToString();
-            page.PageId = pageOps.GetPageById(pageId).PageId;
+            //pageId = 1;
+            page = pageOps.GetPageById(pageId);
 
             return View(page);
         }
 
-        public ActionResult CreateStaticPage(int pageId)
+        public ActionResult CreateStaticPage()
         {
-            return View();
+            return View(new StaticPage());
         }
 
-        [System.Web.Mvc.HttpPost]
-        public ActionResult CreateStaticPage(StaticPage page, int pageId)
+        [HttpPost]
+        public ActionResult CreateStaticPage(StaticPage page)
         {
-            var Page = new StaticPage();
-            Page.IsActive = true;
-            Page.PageId = 1;
+            page.IsActive = true;
+            //page.PageId = 1;
 
             var ops = new StaticPageOperations();
-            ops.Add(page, pageId);
+            ops.Add(page);
             return RedirectToAction("ViewStaticPage");
         }
     }

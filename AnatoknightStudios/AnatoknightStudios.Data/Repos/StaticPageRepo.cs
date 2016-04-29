@@ -40,14 +40,14 @@ namespace AnatoknightStudios.Data.Repos
             }
         }
 
-        public void AddPage(StaticPage page, int pageId)
+        public void AddPage(StaticPage page)
         {
             using (var _cn = new SqlConnection(conn))
             {
                 var parameters = new DynamicParameters();
 
                 parameters.Add("Title", page.Title);
-                parameters.Add("PageContent", page.Content);
+                parameters.Add("PageContent", page.PageContent);
                 parameters.Add("IsActive", page.IsActive);
 
                 string query = "INSERT INTO StaticPage (Title, PageContent, IsActive) " +
