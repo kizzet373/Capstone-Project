@@ -1,0 +1,44 @@
+﻿@model AnatoknightStudios.Models.StaticPage
+
+@{
+    ViewBag.Title = "CreateStaticPage";
+}
+
+<h2>CreateStaticPage</h2>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+</head>
+<body>
+    <p>
+        <h3 style="color: red">Hello there, please enter your page information!</h3>
+    </p>
+    @using (Html.BeginForm("CreateStaticPage", "StaticPage", null, FormMethod.Post, new { id = "addPage" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label>Page Title</label>
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        </div>
+
+        <div>
+            <textarea id="TinyMcePage" name="PageContent"></textarea>
+            <br />
+            <input type="submit" value="Submit" class="btn btn-default" />
+        </div>
+    }
+</body>
+</html>
+
+@section scripts {
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/app/tinyMcePage.js"></script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/app/jquery-validate-defaults.js"></script>
+}
