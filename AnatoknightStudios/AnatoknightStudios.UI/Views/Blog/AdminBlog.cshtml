@@ -1,4 +1,5 @@
-﻿@model AnatoknightStudios.Models.Blog
+﻿@using AnatoknightStudios.Models
+@model AnatoknightStudios.Models.Blog
 
 @{
     ViewBag.Title = "AdminBlog";
@@ -41,30 +42,36 @@
             {
                 <div>
                     <div class="col-md-2" float left>
-                        @Html.ActionLink("Edit", "EditPost", new {id = item.PostId}, new {@class = "btn btn-default"})
+                        @Html.ActionLink("Edit", "EditPost", new {id = item.PostId}, new {@class = "btn btn-success"})
                         <button id="btnShowDeletePost" class="btn btn-danger btnShowDeletePost">Delete</button>
                         @Html.Hidden("postId", item.PostId, new {id = "postId"})
                     </div>
 
                     <div>
-                    <div class="center">
-                        @item.PostDate.ToString("MM-dd-yyyy")
-                    </div>
-                        <div class="center">
-                            @item.FirstName
-                            @item.LastName
+                        <div class="col-md-5" style="text-align: left">
+                            <div>
+                                <b> &nbsp;&nbsp; @item.PostDate.ToString("MM-dd-yyyy")</b>
+                            </div>
                         </div>
+                        <div class="col-md-5" style="text-align: right">
+                            <div class="center">
+                                <b>@item.FirstName
+                                    @item.LastName</b>
+                            </div>
+                        </div>
+                        <br/>
                     </div>
 
                     <div class="center">
-                        <label>Post Title: &nbsp; </label><b>@item.PostTitle</b>
+                        <b><a href="@Url.Action("PostDetails", "Blog", new {id = item.PostId})" onclick="" type="submit">@item.PostTitle</a></b>
                     </div>
+                    <br/>
 
                     <div class="center">
                         @Html.Raw(item.PostContent)
                     </div>
                 </div>
-
+                <hr/>
             }
     </div>
     </div>
