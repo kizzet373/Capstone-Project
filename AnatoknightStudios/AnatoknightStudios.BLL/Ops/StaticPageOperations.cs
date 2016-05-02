@@ -32,5 +32,10 @@ namespace AnatoknightStudios.BLL.Ops
         {
             _repo.Delete(pageId);
         }
+
+        public void Edit(int pageId, StaticPage page)
+        {
+            _repo.Edit(pageId, page);
+        }
     }
 }

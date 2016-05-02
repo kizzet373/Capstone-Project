@@ -68,5 +68,22 @@ namespace AnatoknightStudios.Data.Repos
                 _cn.Execute("DeletePage", parameters, commandType: CommandType.StoredProcedure);
             }
         }
+
+        public void Edit(int pageId, StaticPage page)
+        {
+            using (var _cn = new SqlConnection(conn))
+            {
+                var parameters = new DynamicParameters();
+
+                parameters.Add("ID", pageId);
+                parameters.Add("PageTitle", page.Title);
+                parameters.Add("PageContent", page.PageContent);
+                parameters.Add("IsActive", page.IsActive);
+
+                string query = "UPDATE Page SET PageTitle=@Title, PageContent=@PageContent, " +
+                               "IsActive=@IsActive WHERE PageId = @ID";
+                _cn.Execute(query, parameters);
+            }
+        }
     }
 }
