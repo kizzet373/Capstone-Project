@@ -1,7 +1,9 @@
-﻿@model AnatoknightStudios.Models.Blog
+﻿@using AnatoknightStudios.Models
+@model AnatoknightStudios.Models.Blog
 
 @{
     ViewBag.Title = "ContributorBlog";
+    ViewBag.ActiveTags = new List<Tag>();
 }
 
 <div class="row">
@@ -16,9 +18,25 @@
     </div>
 </div>
 
+
 <center>
+    <div class="BlackDiv" style="padding: 15px; width: 70%;">
+        <div class="GrayDiv">
+            <table>
+                <tr>
+                    <td><button class="btn-lg btn-primary" id="category">All Games</button></td>
+                    @foreach (Category category in @Model.Categories)
+                    {
+                        <td><button class="btn-lg btn-primary" id="category">@category.CategoryName</button></td>
+                    }
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <br/>
+
     <div>
-        @*@Html.ActionLink("Add new Post", "AddPost", new { blogId = Model.BlogId, categoryId = 1 }, new { @class = "btn btn-success" })*@
         <button id="btnShowAddPost" class="btn btn-success btnShowAddPost">Add new Post</button>
         @Html.Hidden("BlogId", Model.BlogId, new {id = "BlogId"})
     </div>
@@ -28,17 +46,17 @@
     <div style="border-radius: 20px; padding: 10px; background-color: whitesmoke; margin: 0;">
         <table class="table table-striped" style="background-color: whitesmoke;">
             <thead>
-                <tr>
-                    <th>Post Title</th>
-                    <th>Content</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th>Details</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
+            <tr>
+                <th>Post Title</th>
+                <th>Content</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Details</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
             </thead>
 
             @foreach (var item in Model.Posts)
@@ -55,17 +73,37 @@
                     <td></td>
                     <td></td>
                     <td>
-                        @Html.ActionLink("Details", "PostDetails", new { id = item.PostId }, new { @class = "btn btn-default" })
+                        @Html.ActionLink("Details", "PostDetails", new {id = item.PostId}, new {@class = "btn btn-default"})
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "EditPost", new { id = item.PostId }, new { @class = "btn btn-default" })
+                        @Html.ActionLink("Edit", "EditPost", new {id = item.PostId}, new {@class = "btn btn-default"})
                     </td>
                     <td>
                         <button id="btnShowDeletePost" class="btn btn-danger btnShowDeletePost">Delete</button>
-                        @Html.Hidden("postId", item.PostId, new { id = "postId" })
+                        @Html.Hidden("postId", item.PostId, new {id = "postId"})
                         @*@Html.ActionLinkDelete", "_DeletePostModal", new { id = item.PostId }, new { @class = "btn btn-danger", data_toggle = "modal", data_target = "#deletePostModal" })*@
                     </td>
                 </tr>
+            }
+        </table>
+    </div>
+</div>
+<div class="BlackDiv" style="padding: 10px; border-radius: 20px; position: fixed; right: 0px; top: 50%;">
+    <div style="border-radius: 20px; padding: 10px; background-color: whitesmoke; margin: 0;">
+        <table>
+            <tr>
+                <strong><td>Tags</td></strong>
+            </tr>
+            @using (Html.BeginForm("ContributorBlog", "Blog", FormMethod.Post, new {@class = "form-group"}))
+            {
+                foreach (Tag tag in @Model.Tags)
+                {
+                    <tr>
+                        @*@<td>@Html.CheckBoxFor("")</td>*@
+                        <td>@tag.TagName</td>
+                    </tr>
+                }
+                <tr><td><button class="btn btn-primary" type="submit">Search</button></td></tr>
             }
         </table>
     </div>

@@ -32,12 +32,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-        @if (User.IsInRole("Admin") || User.IsInRole("Contributor"))
-        {
             <a href="@Url.Action("AdminBlog", "Blog")" id="Logo">
                 <img src='@Url.Content("~/Content/Anatoknightlogo.jpg")' style="height: 100%;"/>
             </a>
-        }
+        
         </div>
         <div id="navbarLinks" class="navbar-collapse collapse" style="height: 100%">
             <ul id="navStaticPages" class="nav navbar-nav" style="height: 124px">

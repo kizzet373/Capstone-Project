@@ -21,11 +21,11 @@ namespace AnatoknightStudios.UI.Controllers
             var blogOps = new BlogOperations();
             var blog = new Blog() { BlogId = 1 };
             blog.Posts = blogOps.GetPostByBlogId(1);
-            //var catOps = new CategoryOperations();
-            //blog.Categories = catOps.GetAllActiveCategories();
+            var catOps = new CategoryOperations();
+            blog.Categories = catOps.GetAllActiveCategories();
 
-            //var tagOps = new TagOperations();
-            //blog.Tags = tagOps.GetAllTags();
+            var tagOps = new TagOperations();
+            blog.Tags = tagOps.GetAllTags();
 
             return View(blog);
         }
@@ -38,11 +38,11 @@ namespace AnatoknightStudios.UI.Controllers
             var blog = new Blog() {BlogId = 2};
             blog.Posts = blogOps.GetPostByBlogId(2);
 
-            //var catOps = new CategoryOperations();
-            //blog.Categories = catOps.GetAllActiveCategories();
+            var catOps = new CategoryOperations();
+            blog.Categories = catOps.GetAllActiveCategories();
 
-            //var tagOps = new TagOperations();
-            //blog.Tags = tagOps.GetAllTags();
+            var tagOps = new TagOperations();
+            blog.Tags = tagOps.GetAllTags();
 
             return View(blog);
         }

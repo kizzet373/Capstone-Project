@@ -23,11 +23,9 @@ namespace AnatoknightStudios.Data.Repos
         public List<Category> GetAllActiveCategories()
         {
             using (var _cn = new SqlConnection(conn))
-            {
-                //var categoryList = new List<Category>();
-                //return categoryList;
-
-                var categoryList = _cn.Query<Category>("SELECT * FROM Category ").ToList();
+            {                               
+                var categoryList = _cn.Query<Category>("SELECT * FROM Category " +
+                                                       "WHERE Category.IsActive = 1;").ToList();
                 return categoryList;
             }
         }
