@@ -18,7 +18,7 @@ namespace AnatoknightStudios.UI
             routes.MapRoute(
                     name: "StaticPage",
                     url: "StaticPage/{action}/{pageId}",
-                    defaults: new { controller = "StaticPage", action = "StaticPage", id = UrlParameter.Optional }
+                    defaults: new { controller = "StaticPage", action = "StaticPage", pageId = UrlParameter.Optional }
                     );
 
             routes.MapRoute(
