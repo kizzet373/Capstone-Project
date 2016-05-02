@@ -15,7 +15,7 @@ namespace AnatoknightStudios.UI.Controllers
     {
 
         // GET: Admin Blog
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminBlog()
         {
             var blogOps = new BlogOperations();
@@ -84,6 +84,7 @@ namespace AnatoknightStudios.UI.Controllers
         }
 
         // GET: Delete a post
+        [Authorize(Roles = "Admin, Contributor")]
         public ActionResult _DeletePostModal(int id)
         {
             var ops = new BlogOperations();
