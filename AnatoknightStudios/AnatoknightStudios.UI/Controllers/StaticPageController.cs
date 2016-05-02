@@ -29,11 +29,9 @@ namespace AnatoknightStudios.UI.Controllers
         public ActionResult CreateStaticPage(StaticPage page)
         {
             page.IsActive = true;
-            //page.PageId = 1;
-
             var ops = new StaticPageOperations();
             ops.Add(page);
-            return RedirectToAction("ViewStaticPage");
+            return RedirectToAction("AdminBlog", "Blog");
         }
 
         public ActionResult DeleteStaticPage(int pageId)

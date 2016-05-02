@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using AnatoknightStudios.Data.Repos
+@using AnatoknightStudios.Models
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -6,18 +8,18 @@
     <title>@ViewBag.Title - Anatoknight Studios</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link rel="stylesheet" href="~/Content/BodyStyles.css" />
+    <link rel="stylesheet" href="~/Content/BodyStyles.css"/>
     <style>
         #navStaticPages li {
             height: 100%;padding-top: 38px;
         }
-        #navbarLinks a {           
+        #navbarLinks a {
             font-weight: bold;
         }
         .public a {
             text-shadow: 1px 1px blue;
-            color:turquoise !important;
-        }        
+            color: turquoise !important;
+        }
     </style>
 </head>
 <body style="padding: 125px;">
@@ -48,6 +50,7 @@
                 @if (User.IsInRole("Admin"))
                 {
                     <li class="admin" style="height: 100%; padding-top: 38px;">@Html.ActionLink("ADMIN TOOLS", "AdminBlog", "Blog")</li>
+                    @*<li class="admin" style="height: 100%; padding-top: 38px;">@Html.DropDownList("Static Pages", , "Show All", new { @class = "form-control" })</li>*@
                 }
             </ul>
             @Html.Partial("_LoginPartial")
