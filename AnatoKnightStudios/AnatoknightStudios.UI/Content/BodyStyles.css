@@ -8,8 +8,7 @@
     background-color:DarkGray;    
 }
 .BlackDiv {
-    background-color: black;
-    color: Black !important;    
+    background-color: black !important;  
 }
 
 .table-striped>tbody>tr:nth-child(odd)>td, 

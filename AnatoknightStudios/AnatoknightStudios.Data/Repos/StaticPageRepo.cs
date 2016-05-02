@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -29,30 +30,58 @@ namespace AnatoknightStudios.Data.Repos
             }
         }
 
-        public StaticPage GetPageById(int id)
+        public StaticPage GetPageById(int pageId)
         {
             using (var _cn = new SqlConnection(conn))
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("ID", id);
-                var page = _cn.Query<StaticPage>(@"SELECT * From StaticPage Where PostId = @ID", parameters).FirstOrDefault();
+                parameters.Add("ID", pageId);
+                var page = _cn.Query<StaticPage>(@"SELECT * From StaticPage Where PageId = @ID", parameters).FirstOrDefault();
                 return page;
             }
         }
 
-        public void AddPage(StaticPage page, int pageId)
+        public void AddPage(StaticPage page)
         {
             using (var _cn = new SqlConnection(conn))
             {
                 var parameters = new DynamicParameters();
 
                 parameters.Add("Title", page.Title);
-                parameters.Add("PageContent", page.Content);
+                parameters.Add("PageContent", page.PageContent);
                 parameters.Add("IsActive", page.IsActive);
 
                 string query = "INSERT INTO StaticPage (Title, PageContent, IsActive) " +
                                "VALUES (@Title, @PageContent, @IsActive) ";
 
+                _cn.Execute(query, parameters);
+            }
+        }
+
+        public void Delete(int pageId)
+        {
+            using (var _cn = new SqlConnection(conn))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("PageId", pageId);
+
+                _cn.Execute("DeletePage", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Edit(int pageId, StaticPage page)
+        {
+            using (var _cn = new SqlConnection(conn))
+            {
+                var parameters = new DynamicParameters();
+
+                parameters.Add("ID", pageId);
+                parameters.Add("PageTitle", page.Title);
+                parameters.Add("PageContent", page.PageContent);
+                parameters.Add("IsActive", page.IsActive);
+
+                string query = "UPDATE Page SET PageTitle=@Title, PageContent=@PageContent, " +
+                               "IsActive=@IsActive WHERE PageId = @ID";
                 _cn.Execute(query, parameters);
             }
         }

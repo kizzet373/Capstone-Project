@@ -15,14 +15,14 @@ namespace AnatoknightStudios.UI.Controllers
     {
 
         // GET: Admin Blog
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminBlog()
         {
             var blogOps = new BlogOperations();
             var blog = new Blog() { BlogId = 1 };
-            //blog.Posts = blogOps.GetPostByBlogId(1);
+            blog.Posts = blogOps.GetPostByBlogId(1);
             var catOps = new CategoryOperations();
-            //blog.Categories = catOps.GetAllActiveCategories();
+            blog.Categories = catOps.GetAllActiveCategories();
 
             var tagOps = new TagOperations();
             blog.Tags = tagOps.GetAllTags();
@@ -84,6 +84,7 @@ namespace AnatoknightStudios.UI.Controllers
         }
 
         // GET: Delete a post
+        [Authorize(Roles = "Admin, Contributor")]
         public ActionResult _DeletePostModal(int id)
         {
             var ops = new BlogOperations();
