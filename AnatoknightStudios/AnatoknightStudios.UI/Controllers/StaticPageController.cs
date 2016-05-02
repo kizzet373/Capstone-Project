@@ -33,7 +33,7 @@ namespace AnatoknightStudios.UI.Controllers
 
             var ops = new StaticPageOperations();
             ops.Add(page);
-            return RedirectToAction("ViewStaticPage");
+            return RedirectToAction("AdminBlog", "Blog");
         }
 
         public ActionResult DeleteStaticPage(int pageId)

@@ -41,17 +41,19 @@
             {
                 <div>
                     <div class="col-md-2" float left>
-                        @Html.ActionLink("Edit", "EditPost", new { id = item.PostId }, new { @class = "btn btn-default" })
+                        @Html.ActionLink("Edit", "EditPost", new {id = item.PostId}, new {@class = "btn btn-default"})
                         <button id="btnShowDeletePost" class="btn btn-danger btnShowDeletePost">Delete</button>
-                        @Html.Hidden("postId", item.PostId, new { id = "postId" })
+                        @Html.Hidden("postId", item.PostId, new {id = "postId"})
                     </div>
 
+                    <div>
                     <div class="center">
                         @item.PostDate.ToString("MM-dd-yyyy")
                     </div>
-                    <div class="center">
-                        @item.FirstName
-                        @item.LastName
+                        <div class="center">
+                            @item.FirstName
+                            @item.LastName
+                        </div>
                     </div>
 
                     <div class="center">
