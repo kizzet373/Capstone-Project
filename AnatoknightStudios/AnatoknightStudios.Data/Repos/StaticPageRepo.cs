@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -54,6 +55,17 @@ namespace AnatoknightStudios.Data.Repos
                                "VALUES (@Title, @PageContent, @IsActive) ";
 
                 _cn.Execute(query, parameters);
+            }
+        }
+
+        public void Delete(int pageId)
+        {
+            using (var _cn = new SqlConnection(conn))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("PageId", pageId);
+
+                _cn.Execute("DeletePage", parameters, commandType: CommandType.StoredProcedure);
             }
         }
     }

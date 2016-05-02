@@ -35,5 +35,25 @@ namespace AnatoknightStudios.UI.Controllers
             ops.Add(page);
             return RedirectToAction("ViewStaticPage");
         }
+
+        public ActionResult DeleteStaticPage(int pageId)
+        {
+            var ops = new StaticPageOperations();
+            var page = ops.GetPageById(pageId);
+
+            return View(page);
+        }
+
+        [HttpPost]
+
+        // Add contributors or users in Roles
+        //[Authorize(Roles = "Admin, Contributor")]
+        public ActionResult Delete(int pageId)
+        {
+            var ops = new StaticPageOperations();
+            ops.DeleteStaticPage(pageId);
+
+            return RedirectToAction("AdminBlog", "Blog");
+        }
     }
 }

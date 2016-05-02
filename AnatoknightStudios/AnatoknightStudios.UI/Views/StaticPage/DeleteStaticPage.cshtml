@@ -1,0 +1,20 @@
+﻿@model AnatoknightStudios.Models.StaticPage
+
+@{
+    ViewBag.Title = "DeleteStaticPage";
+}
+
+<h2>DeleteStaticPage</h2>
+
+<div class="row">
+        <table>
+            <tr>
+                <td>Delete page @Model.Title ?</td>
+            </tr>
+        </table>
+        <form action="/StaticPage/Delete/@Model.PageId" method="post" id="@Model.PageId">
+            <input type="hidden" id="@Model.PageId"/>
+            <button class="btn btn-default">Cancel</button>
+            <button class="btn btn-primary" id="@Model.PageId">Delete</button>
+        </form>
+</div>
