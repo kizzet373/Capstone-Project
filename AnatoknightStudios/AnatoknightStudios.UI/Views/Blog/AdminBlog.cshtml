@@ -15,65 +15,101 @@
         @Html.Partial("_AddPostModal")
     </div>
 </div>
-
-<center>
-    <div style="width: 100%;">
-        @*@Html.ActionLink("Add new Post", "AddPost", null, new { @class = "btn btn-success", @style = "margin: auto;" })*@
-        <button id="btnShowAddPost" class="btn btn-success btnShowAddPost">Add new Post</button>
+<div class="row">
+    <center>
+        <div style="width: 100%;">
+            <button id="btnShowAddPost" class="btn btn-success btnShowAddPost">Add new Post</button>
+            @Html.Hidden("BlogId", Model.BlogId, new { id = "BlogId" })
         </div>
-</center>
-
-<div class="BlackDiv" style="padding: 30px; border-radius: 20px;">
-    <div style="border-radius: 20px; padding: 10px; background-color: whitesmoke; margin: 0; width: 100%;">
-        <table class="table table-striped" style="background-color: whitesmoke; width: 100%;">
+    </center>
+</div>
+<div class="row">
+    
+    <div class="BlackDiv, col-md-10" style="padding: 30px; border-radius: 20px;">
+    <div style="border-radius: 20px; padding: 10px; background-color: whitesmoke; margin: 0;">
+        <table class="table table-striped" style="background-color: whitesmoke;">
             <thead>
-                <tr>
-                    <th>Post Title</th>
-                    <th>Content</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th>Details</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
+            <tr>
+                <th></th>
+            </tr>
             </thead>
 
             @foreach (var item in Model.Posts)
             {
                 <tr>
+                    <th>
+                        @item.PostDate.ToString("MM-dd-yyyy")
+                    </th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <th>
+                        @item.FirstName
+                        @item.LastName
+                    </th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
                     <td>
-                        @item.PostTitle
+                        <label>Post Title: &nbsp; </label><b>@item.PostTitle</b>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.ActionLink("Edit", "EditPost", new {id = item.PostId}, new {@class = "btn btn-default"})
+                    </td>
+
+                    <td>
+                        <button id="btnShowDeletePost" class="btn btn-danger btnShowDeletePost">Delete</button>
+                        @Html.Hidden("postId", item.PostId, new {id = "postId"})
                     </td>
                     <td>
                         @Html.Raw(item.PostContent)
                     </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+
                     <td>
-                        @Html.ActionLink("Details", "PostDetails", new { id = item.PostId }, new { @class = "btn btn-default" })
+                        @*@Html.ActionLink("Details", "PostDetails", new {id = item.PostId}, new {@class = "btn btn-default"})*@
                     </td>
-                    <td>
-                        @Html.ActionLink("Edit", "EditPost", new { id = item.PostId }, new { @class = "btn btn-default" })
-                    </td>
-                    <td>
-                        <button id="btnShowDeletePost" class="btn btn-danger btnShowDeletePost">Delete</button>
-                        @Html.Hidden("postId", item.PostId, new { id = "postId" })
-                        @*@Html.ActionLinkDelete", "_DeletePostModal", new { id = item.PostId }, new { @class = "btn btn-danger", data_toggle = "modal", data_target = "#deletePostModal" })*@
-                    </td>
+                    <td></td>
                 </tr>
             }
         </table>
     </div>
+    </div>
+
+    <div class="BlackDiv, col-md-2" style="padding: 30px; border-radius: 20px;">
+        <div style="border-radius: 20px; padding: 10px; background-color: whitesmoke; margin: 0;">
+            <table>
+                <tr>
+                    <strong><td>Tag Name</td></strong>
+                </tr>
+                <tr>
+                    <td>Tag 1</td>
+                </tr>
+                <tr>
+                    <td>Tag 2</td>
+                </tr>
+                <tr>
+                    <td>Tag 3</td>
+                </tr>
+                <tr>
+                    <td>Tag 4</td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+
 </div>
-<br/>
+
+<br />
 
 @section scripts{
-    <script type="text/javascript" src="~/Scripts/app/deletePost.js"></script>
-    <script type="text/javascript" src="~/Scripts/app/addPost.js"></script>
-<script src="~/Scripts/tinymce/tinymce.min.js"></script>
-<script src="~/Scripts/app/tinyMcePage.js"></script>
+            <script type="text/javascript" src="~/Scripts/app/deletePost.js"></script>
+            <script type="text/javascript" src="~/Scripts/app/addPost.js"></script>
+            <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+            <script src="~/Scripts/app/tinyMcePage.js"></script>
 }

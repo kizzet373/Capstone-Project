@@ -10,12 +10,30 @@ namespace AnatoknightStudios.BLL.Ops
 {
     public class CategoryOperations
     {
+
+        private CategoryRepo _repo = new CategoryRepo();
+
         public List<Category> GetAllActiveCategories()
         {
-            var catRepo = new CategoryRepo();
-            var categoryList = catRepo.GetAllActiveCategories();
+            var categoryList = _repo.GetAllActiveCategories();
 
             return categoryList;
+        }
+
+        public Category GetCategoryById(int id)
+        {
+            return _repo.GetCategoryById(id);
+        }
+
+        public Category AddCategory(Category category)
+        {
+            _repo.AddCategory(category);
+            return category;
+        }
+
+        public void Delete(int categoryId)
+        {
+            _repo.DeleteCategoryById(categoryId);
         }
     }
 }

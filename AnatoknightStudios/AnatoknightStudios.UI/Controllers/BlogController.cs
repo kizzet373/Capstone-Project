@@ -20,12 +20,12 @@ namespace AnatoknightStudios.UI.Controllers
         {
             var blogOps = new BlogOperations();
             var blog = new Blog() { BlogId = 1 };
-            blog.Posts = blogOps.GetPostByBlogId(1);
-            //var catOps = new CategoryOperations();
+            //blog.Posts = blogOps.GetPostByBlogId(1);
+            var catOps = new CategoryOperations();
             //blog.Categories = catOps.GetAllActiveCategories();
 
-            //var tagOps = new TagOperations();
-            //blog.Tags = tagOps.GetAllTags();
+            var tagOps = new TagOperations();
+            blog.Tags = tagOps.GetAllTags();
 
             return View(blog);
         }
@@ -38,11 +38,11 @@ namespace AnatoknightStudios.UI.Controllers
             var blog = new Blog() {BlogId = 2};
             blog.Posts = blogOps.GetPostByBlogId(2);
 
-            //var catOps = new CategoryOperations();
-            //blog.Categories = catOps.GetAllActiveCategories();
+            var catOps = new CategoryOperations();
+            blog.Categories = catOps.GetAllActiveCategories();
 
-            //var tagOps = new TagOperations();
-            //blog.Tags = tagOps.GetAllTags();
+            var tagOps = new TagOperations();
+            blog.Tags = tagOps.GetAllTags();
 
             return View(blog);
         }
@@ -51,7 +51,7 @@ namespace AnatoknightStudios.UI.Controllers
         [Authorize(Roles = "Admin, Contributor")]
         public ActionResult AddPost(int blogId, int categoryId)
         {
-            return View("AddPost", new Post() {BlogId = blogId, CategoryId = categoryId});
+            return View("_AddPostModal", new Post() {BlogId = blogId, CategoryId = categoryId});
         }
 
         // POST: Create a new post
@@ -124,13 +124,6 @@ namespace AnatoknightStudios.UI.Controllers
             return RedirectToAction("AdminBlog");
         }
 
-        // GET: Create a new post
-        [Authorize(Roles = "Admin, Contributor")]
-        public ActionResult Add()
-        {
-            return View("_AddPostModal");
-        }
-
         //// POST: Create a new post
         //[HttpPost]
         //[Authorize(Roles = "Admin, Contributor")]
@@ -145,7 +138,7 @@ namespace AnatoknightStudios.UI.Controllers
         //    var ops = new BlogOperations();
         //    ops.Add(post, User.Identity.GetUserId());
         //    //_repo.Add(post);
-        //    return RedirectToAction("Index");
+        //    return RedirectToAction("AdminBlog");
         //}
     }
 }

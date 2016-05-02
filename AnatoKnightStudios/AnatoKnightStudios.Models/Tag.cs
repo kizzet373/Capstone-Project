@@ -9,6 +9,6 @@ namespace AnatoknightStudios.Models
     {
         public int TagId { get; set; }
         public string TagName { get; set; }
-        //public int TagPopularity{ get; set;}
+        public int TagPopularity{ get; set;}
     }
 }

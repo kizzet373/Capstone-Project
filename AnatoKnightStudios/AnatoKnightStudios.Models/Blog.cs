@@ -12,5 +12,12 @@ namespace AnatoknightStudios.Models
         public List<Tag> Tags { get; set; }
         public List<Category> Categories { get; set; }
         public string BlogTitle { get; set; }
+
+        public Blog()
+        {
+            Posts = new List<Post>();
+            Tags = new List<Tag>();
+            Categories = new List<Category>();
+        }
     }
 }

@@ -12,9 +12,9 @@
 </head>
 <body>
 <p>
-    <h3 style="color: blue">Hello there, please enter your blog comment!</h3>
+    <h3 style="color: red">Hello there, please enter your blog comment!</h3>
 </p>
-@using (Html.BeginForm())
+@using (Html.BeginForm("AddPost", "Blog", null, FormMethod.Post, new { id = "addPost" }))
 {
     @Html.AntiForgeryToken()
     
@@ -24,6 +24,7 @@
     </div>
 
     <div>
+        @*Need validation for TinyMCE*@
         <textarea id="TinyMcePage" name="PostContent"></textarea>
         <br/>
         <input type="submit" value="Submit" class="btn btn-default"/>
@@ -35,5 +36,9 @@
 @section scripts {
     <script src="~/Scripts/tinymce/tinymce.min.js"></script>
     <script src="~/Scripts/app/tinyMcePage.js"></script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/app/jquery-validate-defaults.js"></script>
+    <script src="~/Scripts/app/addPostValidation.js"></script>
 }
 

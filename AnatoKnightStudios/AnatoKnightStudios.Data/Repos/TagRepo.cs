@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AnatoknightStudios.Models;
+using Dapper;
 
 namespace AnatoknightStudios.Data.Repos
 {
@@ -19,9 +21,11 @@ namespace AnatoknightStudios.Data.Repos
 
         public List<Tag> GetAllTags()
         {
-            var tags = new List<Tag>();
-
-            return tags;
+            using (var _cn = new SqlConnection(_conn))
+            {
+                var tags = _cn.Query<Tag>("SELECT * FROM Tag ").ToList();
+                return tags;
+            }
         }
     }
 }

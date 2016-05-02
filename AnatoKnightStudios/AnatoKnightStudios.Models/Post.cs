@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Build.Framework;
 
 namespace AnatoknightStudios.Models
 {
@@ -15,10 +16,13 @@ namespace AnatoknightStudios.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime PostDate { get; set; }
+
+        [Required]
         public string PostTitle { get; set; }
         public string AspNetUserId { get; set; }
 
         [AllowHtml]
+        [Required]
         public string PostContent { get; set; }
         public List<string> PostImageUrls { get; set; }
         public List<Tag> PostTags { get; set; }

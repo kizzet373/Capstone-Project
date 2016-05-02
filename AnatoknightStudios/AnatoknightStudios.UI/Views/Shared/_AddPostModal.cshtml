@@ -12,18 +12,37 @@
                     <h3 style="color: blue">Hello there, please enter your blog post!</h3>
                 </p>
 
-                <div class="form-group">
-                    <label>Post Title</label>
-                </div>
+                <form action="/Blog/AddPost" method="post" id="addPost">
+                    <div class="form-group">
+                        <label>Post Title</label>
+                        <input type="text" id="PostTitle" name="PostTitle"/>
+                    </div>
 
-        <div id="formId">
-            <textarea id="TinyMcePage" name="PostContent"></textarea>
-            <br />
-            <input type="submit" value="Submit" class="btn btn-default" />
-        </div>
-    </div>
-            <div class="modal-footer">
+                    <div id="formId">
+                        <textarea id="TinyMcePage" name="PostContent" ID="PostContent"></textarea>
+                        <br/>
+                        <input type="hidden" id="BlogId" name="BlogId"/>
+                        <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary" id="Submit">Add</button>
+                    </div>
+                </form>
             </div>
+        </div>
+        <div class="modal-footer">
         </div>
     </div>
 </div>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/app/jquery-validate-defaults.js"></script>
+<script src="~/Scripts/app/addPostValidation.js"></script>
+
+@*<script type="text/javascript">
+    $(document).ready(function() {
+        $("#addPost").on("submit", function() {
+            if (!$(this).valid()) {
+                return false;
+            }
+        });
+    });
+</script>*@

@@ -13,6 +13,14 @@ namespace AnatoknightStudios.UI
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //map route for static pages, passes controller action to index
+            //dont know if need yet
+            //routes.MapRoute(
+            //        name: "StaticPage",
+            //        url: "StaticPage/{page}",
+            //        defaults: new { controller = "StaticPage", action = "Index" }
+            //        );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
