@@ -33,10 +33,8 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PageContent, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-
-                <textarea id="TinyMcePage" name="PostContent">@Model.PageContent</textarea>
+                <textarea id="TinyMcePage" name="PageContent">@Model.PageContent</textarea>
             </div>
         </div>
 
@@ -52,7 +50,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default"/>
             </div>
         </div>
     </div>
@@ -66,4 +64,7 @@
 @section scripts {
     <script src="~/Scripts/tinymce/tinymce.min.js"></script>
     <script src="~/Scripts/app/tinyMcePage.js"></script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/app/jquery-validate-defaults.js"></script>
 }

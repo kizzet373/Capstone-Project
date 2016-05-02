@@ -76,11 +76,11 @@ namespace AnatoknightStudios.Data.Repos
                 var parameters = new DynamicParameters();
 
                 parameters.Add("ID", pageId);
-                parameters.Add("PageTitle", page.Title);
+                parameters.Add("Title", page.Title);
                 parameters.Add("PageContent", page.PageContent);
                 parameters.Add("IsActive", page.IsActive);
 
-                string query = "UPDATE Page SET PageTitle=@Title, PageContent=@PageContent, " +
+                string query = "UPDATE StaticPage SET Title=@Title, PageContent=@PageContent, " +
                                "IsActive=@IsActive WHERE PageId = @ID";
                 _cn.Execute(query, parameters);
             }
