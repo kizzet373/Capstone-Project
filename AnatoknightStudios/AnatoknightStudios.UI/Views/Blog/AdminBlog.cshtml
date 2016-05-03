@@ -1,4 +1,4 @@
-﻿@model AnatoknightStudios.Models.Blog
+﻿@model AnatoknightStudios.UI.Models.BlogVm
 
 @{
     ViewBag.Title = "AdminBlog";
@@ -27,7 +27,7 @@
         <div align="center" class="col-md-12" style="padding: 20px; border-radius: 20px;">
                 <div style="width: 100%;">
                     <button id="btnShowAddPost" class="btn btn-success btnShowAddPost">Add new Post</button>
-                    @Html.Hidden("BlogId", Model.BlogId, new { id = "BlogId" })
+                    @Html.Hidden("BlogId", Model.Blog.BlogId, new { id = "BlogId" })
                 </div>
         </div>
     </div>
@@ -37,7 +37,7 @@
     <div class="BlackDiv col-md-10" style="padding: 30px; border-radius: 20px;">
     <div style="border-radius: 20px; padding: 10px; background-color: whitesmoke; margin: 0;">
 
-            @foreach (var item in Model.Posts)
+            @foreach (var item in Model.Blog.Posts)
             {
                 <div>
                     <div class="col-md-2" float left>

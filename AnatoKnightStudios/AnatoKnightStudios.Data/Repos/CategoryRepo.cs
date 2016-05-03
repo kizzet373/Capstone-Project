@@ -49,12 +49,11 @@ namespace AnatoknightStudios.Data.Repos
             {
                 var parameters = new DynamicParameters();
 
-                parameters.Add("CategoryId", category.CategoryId);
                 parameters.Add("CategoryName", category.CategoryName);
                 parameters.Add("IsActive", category.IsActive);
 
-                string query = "INSERT INTO Category (CategoryId, CategoryName, IsActive " +
-                               "VALUES (@CategoryId, @CategoryName, @IsActive) ";
+                string query = "INSERT INTO Category (CategoryName, IsActive " +
+                               "VALUES (@CategoryName, @IsActive) ";
 
                 _cn.Execute(query, parameters);
             }
