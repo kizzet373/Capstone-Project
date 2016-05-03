@@ -12,14 +12,12 @@ namespace AnatoknightStudios.Tests
     [TestFixture]
     class DataTests
     {
-        private BlogRepo _repo = new BlogRepo();
-
         [TestCase(2, 2)]
         public void GetPostById(int postId, int expectedPost)
         {
             Post samplePost = new Post();
-            samplePost = _repo.GetPostById(postId);
-
+            BlogRepo repo = new BlogRepo();
+            samplePost = repo.GetPostById(postId);
             Assert.AreEqual(expectedPost, samplePost.PostId);
         }
     }
