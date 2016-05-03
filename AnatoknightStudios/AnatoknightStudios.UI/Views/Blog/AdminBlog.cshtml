@@ -41,11 +41,14 @@
             @foreach (var item in Model.Posts)
             {
                 <div>
-                    <div class="col-md-2" float left>
-                        @Html.ActionLink("Edit", "EditPost", new {id = item.PostId}, new {@class = "btn btn-success"})
-                        <button id="btnShowDeletePost" class="btn btn-danger btnShowDeletePost">Delete</button>
-                        @Html.Hidden("postId", item.PostId, new {id = "postId"})
-                    </div>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div class="col-md-2" float left>
+                            @Html.ActionLink("Edit", "EditPost", new {id = item.PostId}, new {@class = "btn btn-success"})
+                            <button id="btnShowDeletePost" class="btn btn-danger btnShowDeletePost">Delete</button>
+                            @Html.Hidden("postId", item.PostId, new {id = "postId"})
+                        </div>
+                    }
 
                     <div>
                         <div class="col-md-5" style="text-align: left">

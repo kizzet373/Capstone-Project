@@ -15,7 +15,7 @@ namespace AnatoknightStudios.UI.Controllers
     {
 
         // GET: Admin Blog
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public ActionResult AdminBlog()
         {
             var blogOps = new BlogOperations();
@@ -31,7 +31,7 @@ namespace AnatoknightStudios.UI.Controllers
         }
 
         // GET: Contributor Blog
-        //[Authorize(Roles = "Contributor" || "Admin")]
+        //[Authorize(Roles = "Contributor, Admin")]
         public ActionResult ContributorBlog()
         {
             var blogOps = new BlogOperations();
