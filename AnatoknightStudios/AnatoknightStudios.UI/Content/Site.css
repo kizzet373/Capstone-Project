@@ -28,3 +28,11 @@ textarea {
     display: block;
     padding: 15px 15px;
 }
+
+.dropdown-menu {
+    background-color: black;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background-color: black;
+}
