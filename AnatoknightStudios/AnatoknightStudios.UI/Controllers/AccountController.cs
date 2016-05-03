@@ -403,7 +403,7 @@ namespace AnatoknightStudios.UI.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("AdminBlog", "Blog");
         }
 
         //
@@ -460,7 +460,7 @@ namespace AnatoknightStudios.UI.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("ContributorBlog", "Blog");
+            return RedirectToAction("AdminBlog", "Blog");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

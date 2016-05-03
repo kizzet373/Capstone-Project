@@ -7,6 +7,7 @@ using System.Web.DynamicData;
 using System.Web.Mvc;
 using AnatoknightStudios.BLL.Ops;
 using AnatoknightStudios.Models;
+using AnatoknightStudios.UI.Models;
 using Microsoft.AspNet.Identity;
 
 namespace AnatoknightStudios.UI.Controllers
@@ -15,36 +16,55 @@ namespace AnatoknightStudios.UI.Controllers
     {
 
         // GET: Admin Blog
-        [Authorize(Roles = "Admin")]
-        public ActionResult AdminBlog()
+
+        public ActionResult AdminBlog(int? categoryId)
         {
             var blogOps = new BlogOperations();
-            var blog = new Blog() { BlogId = 1 };
-            blog.Posts = blogOps.GetPostByBlogId(1);
+            var blogVm = new BlogVm() {Blog = new Blog() {BlogId = 1} };
+            blogVm.Blog.Posts = blogOps.GetPostByBlogId(blogVm.Blog.BlogId);
+
+            if (categoryId != null)
+            {
+                var posts = from post in blogVm.Blog.Posts
+                    where post.CategoryId == categoryId
+                    select post;
+
+                blogVm.Blog.Posts = posts.ToList();
+            }
+
             var catOps = new CategoryOperations();
-            blog.Categories = catOps.GetAllActiveCategories();
+            blogVm.Blog.Categories = catOps.GetAllActiveCategories();
 
             var tagOps = new TagOperations();
-            blog.Tags = tagOps.GetAllTags();
+            blogVm.Blog.Tags = tagOps.GetAllTags();
 
-            return View(blog);
+            return View(blogVm);
         }
 
         // GET: Contributor Blog
-        //[Authorize(Roles = "Contributor" || "Admin")]
-        public ActionResult ContributorBlog()
+        //[Authorize(Roles = "Contributor, Admin")]
+        public ActionResult ContributorBlog(int? categoryId)
         {
             var blogOps = new BlogOperations();
-            var blog = new Blog() {BlogId = 2};
-            blog.Posts = blogOps.GetPostByBlogId(2);
+            var blogVm = new BlogVm() { Blog = new Blog() { BlogId = 2 } };
+            blogVm.Blog.Posts = blogOps.GetPostByBlogId(blogVm.Blog.BlogId);
+
+            if (categoryId != null)
+            {
+                var posts = from post in blogVm.Blog.Posts
+                            where post.CategoryId == categoryId
+                            select post;
+
+                blogVm.Blog.Posts = posts.ToList();
+            }
 
             var catOps = new CategoryOperations();
-            blog.Categories = catOps.GetAllActiveCategories();
+            blogVm.Blog.Categories = catOps.GetAllActiveCategories();
 
             var tagOps = new TagOperations();
-            blog.Tags = tagOps.GetAllTags();
+            blogVm.Blog.Tags = tagOps.GetAllTags();
 
-            return View(blog);
+            return View(blogVm);
         }
 
         // GET: Create a new post
@@ -122,6 +142,13 @@ namespace AnatoknightStudios.UI.Controllers
         {
             var ops = new BlogOperations();
             ops.Edit(post.PostId, post);
+            return RedirectToAction("AdminBlog");
+        }
+
+        public ActionResult AddCategory(Category category)
+        {
+            var catOps = new CategoryOperations();
+            catOps.AddCategory(category);
             return RedirectToAction("AdminBlog");
         }
 

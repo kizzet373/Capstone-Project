@@ -1,5 +1,5 @@
 ﻿@using AnatoknightStudios.Models
-@model AnatoknightStudios.Models.Blog
+@model AnatoknightStudios.UI.Models.BlogVm
 
 @{
     ViewBag.Title = "ContributorBlog";
@@ -21,24 +21,25 @@
 
 <center>
     <div class="BlackDiv" style="padding: 15px; width: 70%;">
-        <div class="GrayDiv">
+        <div class="GrayDiv" style="height: 50px;">
             <table>
                 <tr>
-                    <td><button class="btn-lg btn-primary" id="category">All Games</button></td>
-                    @foreach (Category category in @Model.Categories)
+                    <td><button type="button" class="btn-primary btn-med" style="margin: 10px;" onclick='location.href = "@Url.Action("ContributorBlog", "Blog", null)"'>All Games</button></td>
+                    @foreach (Category category in @Model.Blog.Categories)
                     {
-                        <td><button class="btn-lg btn-primary" id="category">@category.CategoryName</button></td>
+                        <td><button type="button" class="btn-primary btn-med" style="margin: 10px;" onclick='location.href = "@Url.Action("ContributorBlog", "Blog", new {categoryId = @category.CategoryId})"'>@category.CategoryName</button></td>
                     }
                 </tr>
             </table>
+            @*<td><button type="button" class="btn-success btn-med" style="margin: 10px; align-self: center;" onclick='location.href="@Url.Action("AddCategory", "Blog", null)"'>Add Category</button></td>*@
         </div>
     </div>
 
     <br/>
 
-    <div>
+    <div class="BlackDiv" style="border-radius: 10px; padding: 10px 0px; width: 150px; margin: 20px;">
         <button id="btnShowAddPost" class="btn btn-success btnShowAddPost">Add new Post</button>
-        @Html.Hidden("BlogId", Model.BlogId, new {id = "BlogId"})
+        @Html.Hidden("BlogId", Model.Blog.BlogId, new {id = "BlogId"})
     </div>
 </center>
 
@@ -59,7 +60,7 @@
             </tr>
             </thead>
 
-            @foreach (var item in Model.Posts)
+            @foreach (var item in Model.Blog.Posts)
             {
                 <tr>
                     <td>
@@ -88,7 +89,7 @@
         </table>
     </div>
 </div>
-<div class="BlackDiv" style="padding: 10px; border-radius: 20px; position: fixed; right: 0px; top: 50%;">
+<div class="BlackDiv" style="padding: 10px; border-radius: 25px; position: fixed; right: 0px; top: 50%;">
     <div style="border-radius: 20px; padding: 10px; background-color: whitesmoke; margin: 0;">
         <table>
             <tr>
@@ -96,7 +97,7 @@
             </tr>
             @using (Html.BeginForm("ContributorBlog", "Blog", FormMethod.Post, new {@class = "form-group"}))
             {
-                foreach (Tag tag in @Model.Tags)
+                foreach (Tag tag in @Model.Blog.Tags)
                 {
                     <tr>
                         @*@<td>@Html.CheckBoxFor("")</td>*@
