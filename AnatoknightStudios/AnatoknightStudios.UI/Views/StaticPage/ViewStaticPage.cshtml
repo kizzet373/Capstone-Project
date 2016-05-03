@@ -11,4 +11,5 @@
         <p>@Html.Raw(Model.PageContent)</p>
     </div>
 </div>
-@Html.ActionLink("Delete", "DeleteStaticPage", new { id = @Model.PageId }, new { @class = "btn btn-danger" })
+    @Html.ActionLink("Delete", "DeleteStaticPage", new { pageId = @Model.PageId }, new { @class = "btn btn-danger" })
+    @Html.ActionLink("Edit", "EditStaticPage", new { pageId = @Model.PageId }, new { @class = "btn btn-danger" })

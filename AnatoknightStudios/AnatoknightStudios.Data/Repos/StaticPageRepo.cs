@@ -35,8 +35,8 @@ namespace AnatoknightStudios.Data.Repos
             using (var _cn = new SqlConnection(conn))
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("ID", pageId);
-                var page = _cn.Query<StaticPage>(@"SELECT * From StaticPage Where PageId = @ID", parameters).FirstOrDefault();
+                parameters.Add("PageId", pageId);
+                var page = _cn.Query<StaticPage>(@"SELECT * From StaticPage Where PageId = @PageId", parameters).FirstOrDefault();
                 return page;
             }
         }
@@ -46,7 +46,7 @@ namespace AnatoknightStudios.Data.Repos
             using (var _cn = new SqlConnection(conn))
             {
                 var parameters = new DynamicParameters();
-
+                
                 parameters.Add("Title", page.Title);
                 parameters.Add("PageContent", page.PageContent);
                 parameters.Add("IsActive", page.IsActive);

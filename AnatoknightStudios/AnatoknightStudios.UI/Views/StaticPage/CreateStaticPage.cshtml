@@ -14,7 +14,7 @@
     <p>
         <h3 style="color: black">Hello there, please enter your page information!</h3>
     </p>
-    @using (Html.BeginForm("CreateStaticPage", "StaticPage", null, FormMethod.Post, new { id = "addPage" }))
+@using (Html.BeginForm("CreateStaticPage", "StaticPage", null, FormMethod.Post, new { id = "addPage" }))
     {
         @Html.AntiForgeryToken()
 
@@ -24,9 +24,9 @@
         </div>
 
         <div>
-            <textarea id="TinyMcePage" name="Content"></textarea>
-            <br />
-            <input type="submit" value="Submit" class="btn btn-default" />
+            <textarea id="TinyMcePage" name="PageContent"></textarea>
+            <br/>
+            <input type="submit" value="Submit" class="btn btn-default"/>
         </div>
     }
 </body>

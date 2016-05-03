@@ -18,13 +18,13 @@ namespace AnatoknightStudios.UI
             routes.MapRoute(
                     name: "StaticPage",
                     url: "StaticPage/{action}/{pageId}",
-                    defaults: new { controller = "StaticPage", action = "StaticPage", id = UrlParameter.Optional }
+                    defaults: new { controller = "StaticPage", action = "StaticPage", pageId = UrlParameter.Optional }
                     );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Blog", action = "ContributorBlog", id = UrlParameter.Optional }
+                defaults: new { controller = "Blog", action = "AdminBlog", id = UrlParameter.Optional }
             );
         }
     }
