@@ -1,0 +1,16 @@
+﻿@model AnatoknightStudios.Models.StaticPageListVm
+
+<li class="public">
+    <div class="dropdown">
+        <a class="public listitemanchor dropdown-toggle" data-toggle="dropdown">
+            <label>PAGES</label>
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            @foreach (var item in Model.StaticPages)
+            {
+                <li>@Html.ActionLink(item.Title, "ViewStaticPage", "StaticPage", new { pageId = item.PageId }, null)</li>
+            }
+        </ul>
+    </div>
+</li>
