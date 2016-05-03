@@ -25,14 +25,17 @@
         @Html.Partial("_AddPostModal")
     </div>
 </div>
-    <div class="row">
+<div class="row">
+    @if (User.IsInRole("Admin") || User.IsInRole("Contributor"))
+    {
         <div align="center" class="col-md-12" style="padding: 20px; border-radius: 20px;">
-                <div style="width: 100%;">
-                    <button id="btnShowAddPost" class="btn btn-success btnShowAddPost">Add new Post</button>
-                    @Html.Hidden("BlogId", Model.Blog.BlogId, new { id = "BlogId" })
-                </div>
+            <div style="width: 100%;">
+                <button id="btnShowAddPost" class="btn btn-success btnShowAddPost">Add new Post</button>
+                @Html.Hidden("BlogId", Model.Blog.BlogId, new {id = "BlogId"})
+            </div>
         </div>
-    </div>
+    }
+</div>
 
 <div class="row">
     
@@ -42,7 +45,8 @@
             @foreach (var item in Model.Blog.Posts)
             {
                 <div>
-                    @if (User.IsInRole("Admin"))
+                    <div>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Contributor"))
                     {
                         <div class="col-md-2" float left>
                             @Html.ActionLink("Edit", "EditPost", new {id = item.PostId}, new {@class = "btn btn-success"})
@@ -50,6 +54,7 @@
                             @Html.Hidden("postId", item.PostId, new {id = "postId"})
                         </div>
                     }
+                    </div>
 
                     <div>
                         <div class="col-md-5" style="text-align: left">
@@ -57,13 +62,18 @@
                                 <b> &nbsp;&nbsp; @item.PostDate.ToString("MM-dd-yyyy")</b>
                             </div>
                         </div>
+                    </div>
+                    <div>
                         <div class="col-md-5" style="text-align: right">
                             <div class="center">
                                 <b>@item.FirstName
                                     @item.LastName</b>
                             </div>
                         </div>
-                        <br/>
+                </div>
+                    
+                <div>
+
                     </div>
 
                     <div class="center">
@@ -75,7 +85,7 @@
                         @Html.Raw(item.PostContent)
                     </div>
                 </div>
-                <hr/>
+                <hr style="height:1px;border:none;color:#333; background-color: #333;"/>
             }
     </div>
     </div>

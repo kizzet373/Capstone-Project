@@ -45,7 +45,6 @@
             <ul id="navStaticPages" class="nav navbar-nav" style="height: 124px">
                 @if (User.IsInRole("Contributor") || User.IsInRole("Admin"))
                 {
-                    <li class="public">@Html.ActionLink("PUBLIC BLOG", "AdminBlog", "Blog")</li>
                     <li class="public">@Html.ActionLink("CONTRIBUTOR BLOG", "ContributorBlog", "Blog")</li>
                 }
 
