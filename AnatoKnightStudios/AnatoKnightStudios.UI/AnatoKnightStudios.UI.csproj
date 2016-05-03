@@ -479,6 +479,7 @@
     <Content Include="Views\StaticPage\CreateStaticPage.cshtml" />
     <Content Include="Views\StaticPage\DeleteStaticPage.cshtml" />
     <Content Include="Views\StaticPage\EditStaticPage.cshtml" />
+    <Content Include="Views\Shared\_StaticPageList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

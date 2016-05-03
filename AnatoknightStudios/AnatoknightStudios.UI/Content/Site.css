@@ -22,3 +22,9 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.listitemanchor {
+    position: relative;
+    display: block;
+    padding: 15px 15px;
+}
