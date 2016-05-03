@@ -83,6 +83,7 @@ namespace AnatoknightStudios.UI.Controllers
             post.IsActive = true;
             post.CategoryId = 1;
             post.Votes = 40;
+            post.PostStatus = "Open";
 
             var ops = new BlogOperations();
             ops.Add(post, User.Identity.GetUserId());

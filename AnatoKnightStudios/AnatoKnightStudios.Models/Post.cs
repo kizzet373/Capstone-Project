@@ -27,7 +27,7 @@ namespace AnatoknightStudios.Models
         public List<string> PostImageUrls { get; set; }
         public List<Tag> PostTags { get; set; }
         public int Votes { get; set; }
-        public Enum PostStatus { get; set; }
+        public string PostStatus { get; set; }
         //public List<Comment> Comments { get; set; }
         public bool IsActive { get; set; }
     }

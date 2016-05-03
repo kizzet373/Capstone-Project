@@ -20,3 +20,16 @@
     background-color: whitesmoke;
 }
 
+#contributorPosts:hover {
+    background-color: #dddddd!important;
+}
+
+#contributorPosts:active {
+    background-color: #aaaaaa !important;
+}
+
+td {
+    border-top: 0px !important;
+}
+
+
