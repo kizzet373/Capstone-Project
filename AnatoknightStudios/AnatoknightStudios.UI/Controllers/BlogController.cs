@@ -19,6 +19,7 @@ namespace AnatoknightStudios.UI.Controllers
 
         public ActionResult AdminBlog(int? categoryId)
         {
+
             var blogOps = new BlogOperations();
             var blogVm = new BlogVm() {Blog = new Blog() {BlogId = 1} };
             blogVm.Blog.Posts = blogOps.GetPostByBlogId(blogVm.Blog.BlogId);

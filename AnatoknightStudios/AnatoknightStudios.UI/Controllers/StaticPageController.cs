@@ -71,5 +71,16 @@ namespace AnatoknightStudios.UI.Controllers
             ops.Edit(page.PageId, page);
             return RedirectToAction("AdminBlog", "Blog");
         }
+
+        public PartialViewResult _StaticPageList()
+        {
+            StaticPageListVm model = new StaticPageListVm();
+            {
+                var pageOps = new StaticPageOperations();
+                model.StaticPages = pageOps.GetAllPages();
+            };
+
+            return PartialView(model);
+        }
     }
 }

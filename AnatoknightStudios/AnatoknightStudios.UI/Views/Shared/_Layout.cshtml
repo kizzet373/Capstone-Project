@@ -1,5 +1,7 @@
-﻿@using AnatoknightStudios.Data.Repos
+﻿@using System.Web.UI.WebControls
+@using AnatoknightStudios.Data.Repos
 @using AnatoknightStudios.Models
+@using AnatoknightStudios.UI.Controllers
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +45,6 @@
             <ul id="navStaticPages" class="nav navbar-nav" style="height: 124px">
                 @if (User.IsInRole("Contributor") || User.IsInRole("Admin"))
                 {
-                    <li class="public">@Html.ActionLink("PUBLIC BLOG", "AdminBlog", "Blog")</li>
                     <li class="public">@Html.ActionLink("CONTRIBUTOR BLOG", "ContributorBlog", "Blog")</li>
                 }
 
@@ -55,6 +56,7 @@
                     @*<li class="admin" style="height: 100%; padding-top: 38px;">@Html.DropDownList("Static Pages", , "Show All", new { @class = "form-control" })</li>*@
                 }
                 <li class="public">@Html.ActionLink("DISCLAIMER", "ViewStaticPage", "StaticPage")</li>
+                @{ Html.RenderAction("_StaticPageList", "StaticPage"); }
             </ul>
             @Html.Partial("_LoginPartial")
         </div>
