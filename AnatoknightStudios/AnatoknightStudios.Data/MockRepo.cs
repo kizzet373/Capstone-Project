@@ -26,5 +26,28 @@ namespace AnatoknightStudios.Data
                 PostContent = "Hahahahaha",
             });
         }
+
+        public List<Post> GetAllPosts()
+        {
+            return _posts;
+        }
+
+        public Post GetPostByIdPost(int postId)
+        {
+            Post post = new Post();
+            return post;
+        }
+
+        public Post GetPostByCategoryId (int categoryId)
+        {
+            foreach (Post post in _posts)
+            {
+                if (post.CategoryId == categoryId)
+                {
+                    return post;
+                }
+            }
+            return null;
+        }
     }
 }

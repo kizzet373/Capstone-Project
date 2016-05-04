@@ -15,24 +15,22 @@ namespace AnatoknightStudios.Tests
     {
         private MockRepo _repo = new MockRepo();
 
-        [TestCase(2, 2)]
+        [TestCase(1, 1)]
         public void GetPostById(int postId, int expectedPost)
         {
-            BlogRepo repo = new BlogRepo();
-            Post samplePost = new Post();
-            
-            samplePost = repo.GetPostById(postId);
-            Assert.AreEqual(expectedPost, samplePost.PostId);
+            Post post = new Post();
+            post = _repo.GetPostByIdPost(postId);
+            Assert.AreEqual(expectedPost, post.PostId);
+
         }
 
         [TestCase(1, 1)]
         public void GetPostByCategory(int categoryId, int expectedId)
         {
-            CategoryRepo repo = new CategoryRepo();
-            Category cat = new Category();
+            Post post = new Post();
+            post = _repo.GetPostByCategoryId(categoryId);
+            Assert.AreEqual(expectedId, post.CategoryId);
 
-            cat = repo.GetCategoryById(categoryId);
-            Assert.AreEqual(expectedId, cat.CategoryId);
         }
     }
 }
