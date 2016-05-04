@@ -32,10 +32,16 @@ namespace AnatoknightStudios.Data
             return _posts;
         }
 
-        public Post GetPostByIdPost(int postId)
+        public Post GetPostByPostId(int postId)
         {
-            Post post = new Post();
-            return post;
+            foreach (Post post in _posts)
+            {
+                if (post.PostId == postId)
+                {
+                    return post;
+                }
+            }
+            return null;
         }
 
         public Post GetPostByCategoryId (int categoryId)

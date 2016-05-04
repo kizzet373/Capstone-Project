@@ -19,7 +19,7 @@ namespace AnatoknightStudios.Tests
         public void GetPostById(int postId, int expectedPost)
         {
             Post post = new Post();
-            post = _repo.GetPostByIdPost(postId);
+            post = _repo.GetPostByPostId(postId);
             Assert.AreEqual(expectedPost, post.PostId);
 
         }
