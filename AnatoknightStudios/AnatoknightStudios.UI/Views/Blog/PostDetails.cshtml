@@ -6,7 +6,7 @@
 
 <h2>Details of Post</h2>
 
-<div>
+<div class="GrayDiv">
     <hr />
     <dl class="dl-horizontal">
 
@@ -63,6 +63,13 @@
     </dl>
 </div>
 <p>
-    @*@Html.ActionLink("Edit", "EditPost", new { id = Model.PostId }, new { @class = "btn btn-danger" })*@ 
-    @Html.ActionLink("Back to List", "AdminBlog", null, new { @class = "btn btn-success" })
+    @*@Html.ActionLink("Edit", "EditPost", new { id = Model.PostId }, new { @class = "btn btn-danger" })*@
+    @if (@Model.BlogId == 1)
+    {
+        @Html.ActionLink("Back to List", "AdminBlog", null, new { @class = "btn btn-success" })
+    }
+    @if (@Model.BlogId == 2)
+    {
+        @Html.ActionLink("Back to List", "ContributorBlog", null, new { @class = "btn btn-success" })
+    }
 </p>

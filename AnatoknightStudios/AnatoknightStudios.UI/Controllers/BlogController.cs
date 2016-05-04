@@ -19,6 +19,7 @@ namespace AnatoknightStudios.UI.Controllers
 
         public ActionResult AdminBlog(int? categoryId)
         {
+
             var blogOps = new BlogOperations();
             var blogVm = new BlogVm() {Blog = new Blog() {BlogId = 1} };
             blogVm.Blog.Posts = blogOps.GetPostByBlogId(blogVm.Blog.BlogId);
@@ -83,6 +84,7 @@ namespace AnatoknightStudios.UI.Controllers
             post.IsActive = true;
             post.CategoryId = 1;
             post.Votes = 40;
+            post.PostStatus = "Open";
 
             var ops = new BlogOperations();
             ops.Add(post, User.Identity.GetUserId());

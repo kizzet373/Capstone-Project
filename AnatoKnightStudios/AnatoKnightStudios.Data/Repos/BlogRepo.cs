@@ -98,11 +98,12 @@ namespace AnatoknightStudios.Data.Repos
                 parameters.Add("IsActive", post.IsActive);
                 parameters.Add("Votes", post.Votes);
                 parameters.Add("AspNetUserId", userId);
+                parameters.Add("PostStatus", post.PostStatus);
 
                 string query = "INSERT INTO Post (CategoryId,  BlogId, PostDate, PostTitle, " +
-                               "PostContent, IsActive, Votes, AspNetUserId) " +
+                               "PostContent, IsActive, Votes, AspNetUserId, PostStatus) " +
                                "VALUES (@CategoryId, @BlogId, @PostDate, @PostTitle, @PostContent, " +
-                               "@IsActive, @Votes, @AspNetUserId) ";
+                               "@IsActive, @Votes, @AspNetUserId, @PostStatus) ";
 
                 _cn.Execute(query, parameters);
             }
@@ -132,10 +133,11 @@ namespace AnatoknightStudios.Data.Repos
                 parameters.Add("PostTitle", post.PostTitle);
                 parameters.Add("PostContent", post.PostContent);
                 parameters.Add("Votes", post.Votes);
+                parameters.Add("PostStatus", post.PostStatus);
 
                 string query = "UPDATE Post SET CategoryId=@CategoryId, BlogId=@BlogId, " +
                                "PostDate=@PostDate, PostTitle=@PostTitle, PostContent=@PostContent, " +
-                               "Votes=@Votes WHERE PostId = @ID";
+                               "Votes=@Votes, PostStatus=@PostStatus WHERE PostId = @ID";
                 _cn.Execute(query, parameters);
             }
         }
