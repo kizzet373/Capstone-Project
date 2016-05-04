@@ -10,15 +10,20 @@ using NUnit.Framework;
 namespace AnatoknightStudios.Tests
 {
     [TestFixture]
-    class DataTests
+    public class DataTests
     {
-        [TestCase(2, 2)]
+
         public void GetPostById(int postId, int expectedPost)
         {
             Post samplePost = new Post();
             BlogRepo repo = new BlogRepo();
             samplePost = repo.GetPostById(postId);
             Assert.AreEqual(expectedPost, samplePost.PostId);
+        }
+
+        public void GetPostByCategory(int categoryId, int expectedId)
+        {
+            
         }
     }
 }
