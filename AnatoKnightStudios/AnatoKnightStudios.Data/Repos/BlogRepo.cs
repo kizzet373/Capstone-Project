@@ -11,13 +11,23 @@ using Dapper;
 
 namespace AnatoknightStudios.Data.Repos
 {
-    public class BlogRepo
+    public class BlogRepo : IBlogRepo
     {
         private string conn;
 
         public BlogRepo()
         {
-            conn = ConfigurationManager.ConnectionStrings["AnatoknightStudios"].ConnectionString;
+            // production
+            //conn = ConfigurationManager.ConnectionStrings["AnatoknightStudios"].ConnectionString;
+
+            // test
+            conn = ConfigurationManager.ConnectionStrings["AnatoknightStudiosTests"].ConnectionString;
+
+        }
+
+        public BlogRepo(string connectionString)
+        {
+            conn = connectionString;
         }
 
         public List<Post> GetAllPosts()
