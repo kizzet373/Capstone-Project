@@ -18,6 +18,9 @@ namespace AnatoknightStudios.Tests
     [TestFixture]
     public class DataTests
     {
+        // Mock Repo
+        //private MockRepo _repo = new MockRepo();
+
         private IBlogRepo _repo;
 
         private string AssemblyLocation()
@@ -71,7 +74,7 @@ namespace AnatoknightStudios.Tests
 
         }
 
-
+        // For Mock Repo
         [TestCase(2, 2)]
         public void GetPostById(int postId, int expectedPost)
         {
@@ -81,6 +84,7 @@ namespace AnatoknightStudios.Tests
 
         }
 
+        // For Mock Repo
         [TestCase(3, 1)]
         public void GetPostByCategory(int categoryId, int expectedId)
         {
