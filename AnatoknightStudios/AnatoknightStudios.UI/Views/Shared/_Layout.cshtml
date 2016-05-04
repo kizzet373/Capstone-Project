@@ -55,7 +55,6 @@
                     <li class="admin" style="height: 100%; padding-top: 38px;">@Html.ActionLink("ADMIN TOOLS", "AdminBlog", "Blog")</li>
                     @*<li class="admin" style="height: 100%; padding-top: 38px;">@Html.DropDownList("Static Pages", , "Show All", new { @class = "form-control" })</li>*@
                 }
-                <li class="public">@Html.ActionLink("DISCLAIMER", "ViewStaticPage", "StaticPage")</li>
                 @{ Html.RenderAction("_StaticPageList", "StaticPage"); }
             </ul>
             @Html.Partial("_LoginPartial")
