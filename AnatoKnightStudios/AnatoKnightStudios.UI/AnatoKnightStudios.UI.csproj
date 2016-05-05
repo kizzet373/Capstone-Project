@@ -232,9 +232,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AnatoknightLogo.jpg" />
+    <Content Include="Content\arrow.png" />
     <Content Include="Content\BodyStyles.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\close.png" />
+    <Content Include="Content\main.css" />
+    <Content Include="Content\StyleSheet1.css" />
+    <Content Include="Content\textext.core.css" />
+    <Content Include="Content\textext.plugin.arrow.css" />
+    <Content Include="Content\textext.plugin.autocomplete.css" />
+    <Content Include="Content\textext.plugin.clear.css" />
+    <Content Include="Content\textext.plugin.focus.css" />
+    <Content Include="Content\textext.plugin.prompt.css" />
+    <Content Include="Content\textext.plugin.tags.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -252,6 +263,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Hashtags.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -264,6 +276,16 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\textext.core.js" />
+    <Content Include="Scripts\textext.plugin.ajax.js" />
+    <Content Include="Scripts\textext.plugin.arrow.js" />
+    <Content Include="Scripts\textext.plugin.autocomplete.js" />
+    <Content Include="Scripts\textext.plugin.clear.js" />
+    <Content Include="Scripts\textext.plugin.filter.js" />
+    <Content Include="Scripts\textext.plugin.focus.js" />
+    <Content Include="Scripts\textext.plugin.prompt.js" />
+    <Content Include="Scripts\textext.plugin.suggestions.js" />
+    <Content Include="Scripts\textext.plugin.tags.js" />
     <Content Include="Scripts\tinymce\jquery.tinymce.min.js" />
     <Content Include="Scripts\tinymce\license.txt" />
     <Content Include="Scripts\tinymce\plugins\advlist\plugin.js" />

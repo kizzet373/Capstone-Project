@@ -15,7 +15,7 @@
 
 <div class="row">
     <div class="col-xs-12">
-        @Html.Partial("_AddPostModal")
+        @Html.Partial("_AddPostModal", Model.Blog)
     </div>
 </div>
 
@@ -35,8 +35,8 @@
             @*<td><button type="button" class="btn-success btn-med" style="margin: 10px; align-self: center;" onclick='location.href="@Url.Action("AddCategory", "Blog", null)"'>Add Category</button></td>*@
         </div>
     </div>
-
     <br/>
+
 @if (User.IsInRole("Contributor") || User.IsInRole("Admin"))
 {
     <div class="BlackDiv" style="border-radius: 10px; padding: 10px 0px; width: 150px; margin: 20px;">
@@ -54,22 +54,35 @@
             {
                 <tr style="border-style: solid; border-width: 2px 2px 2px 2px; border-color: black;">
                     <td style="width: 150px; padding: 0;">
-                        <div style="padding: 8px; border-width: 0 2px 0 0; border-style: solid; height: 95px;">
-                            @if (User.Identity.GetUserId() == post.AspNetUserId)
-                            {
-                                @Html.ActionLink("Edit", "EditPost", new {id = post.PostId}, new {@class = "btn btn-default btn-sm"})
 
-                                <button id="btnShowDeletePost" class="btn btn-danger btn-sm btnShowDeletePost">Delete</button>
-                                @Html.Hidden("postId", post.PostId, new {id = "postId"})
-                            }                            
-                            <br/>
-                            <br/>
-                            @if (User.IsInRole("Admin"))
-                            {
-                                @Html.ActionLink("Approve", "EditPost", new {id = post.PostId}, new {@class = "btn btn-success btn-sm"})
-                                <button id="btnShowDeletePost" class="btn btn-success btn-sm btnShowDeletePost">revise</button>
-                            }
-                        </div>
+                        @if (User.Identity.GetUserId() == post.AspNetUserId || User.IsInRole("Admin"))
+                        {
+                            <div style="padding: 8px; border-width: 0 2px 0 0; border-style: solid; height: 95px; background-color: gray">
+                                @if (User.Identity.GetUserId() == post.AspNetUserId)
+                                {
+                                    @Html.ActionLink("Edit", "EditPost", new {id = post.PostId}, new {@class = "btn btn-default btn-sm"})
+
+                                    <button id="btnShowDeletePost" class="btn btn-danger btn-sm btnShowDeletePost">Delete</button>
+                                    @Html.Hidden("postId", post.PostId, new {id = "postId"})
+                                }
+
+                                <br/>
+                                <br/>
+
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    @Html.ActionLink("Approve", "EditPost", new {id = post.PostId}, new {@class = "btn btn-success btn-sm"})
+                                    <button id="btnShowDeletePost" class="btn btn-success btn-sm btnShowDeletePost">revise</button>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <div style="padding: 8px; border-width: 0 2px 0 0; border-style: solid; height: 95px; background-color: black;">
+                                <br/>
+                                <br/>
+                            </div>
+                        }
                     </td>
                     <td id="contributorPosts" onclick='location.href = "@Url.Action("PostDetails", "Blog", new {id = @post.PostId})"'>
                         <div>

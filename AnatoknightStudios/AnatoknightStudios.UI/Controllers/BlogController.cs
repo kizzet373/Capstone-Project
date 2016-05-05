@@ -68,13 +68,6 @@ namespace AnatoknightStudios.UI.Controllers
             return View(blogVm);
         }
 
-        // GET: Create a new post
-        [Authorize(Roles = "Admin, Contributor")]
-        public ActionResult AddPost(int blogId, int categoryId)
-        {
-            return View("_AddPostModal", new Post() {BlogId = blogId, CategoryId = categoryId});
-        }
-
         // POST: Create a new post
         [HttpPost]
         [Authorize(Roles = "Admin, Contributor")]
@@ -82,9 +75,15 @@ namespace AnatoknightStudios.UI.Controllers
         {
             //hardcoding values
             post.IsActive = true;
-            post.CategoryId = 1;
-            post.Votes = 40;
+            post.Votes = 0;
             post.PostStatus = "Open";
+            
+            var tagOps = new TagOperations();
+
+            foreach (Tag tag in post.PostTags)
+            {
+                tagOps.AddTag(tag);
+            }
 
             var ops = new BlogOperations();
             ops.Add(post, User.Identity.GetUserId());

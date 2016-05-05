@@ -1,4 +1,15 @@
-﻿<div class="modal" id="addPostModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+﻿@using System.Web.Mvc.Html
+@model AnatoknightStudios.Models.Blog
+
+<link rel="stylesheet" src="~/Content/StyleSheet1.css"/>
+<link rel="stylesheet" href="~/Content/textext.core.css" />
+<link rel="stylesheet" href="~/Content/textext.plugin.tags.css" />
+<link rel="stylesheet" href="~/Content/textext.plugin.autocomplete.css" />
+<link rel="stylesheet" href="~/Content/textext.plugin.focus.css" />
+<link rel="stylesheet" href="~/Content/textext.plugin.prompt.css" />
+<link rel="stylesheet" href="~/Content/textext.plugin.arrow.css" />
+
+<div class="modal" id="addPostModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -18,18 +29,27 @@
                         <input type="text" id="PostTitle" name="PostTitle"/>
                     </div>
 
-                    @*<div class="form-group">
+                    <div class="form-group">
                         <label>Category</label>
-                        @Html.DropDownListFor(m => m.Blog)
-                    </div>*@
+                        @Html.DropDownList("Categories", new SelectList(Model.Categories, "CategoryId", "CategoryName"), null, new {@id="CategoryId"});
+                    </div>
 
                     <div id="formId">
-                        <textarea id="TinyMcePage" name="PostContent" ID="PostContent"></textarea>
+                        <textarea id="TinyMcePage" name="PostContent"></textarea>
                         <br/>
-                        <input type="hidden" id="BlogId" name="BlogId"/>
-                        <button class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button class="btn btn-primary" id="Submit">Add</button>
                     </div>
+                    <div>
+                        <input type="hidden" id="BlogId" name="BlogId" />
+                    </div>
+
+                    <h2>Hashtags</h2>
+                    <div class="form-group" style="min-height: 60px;">
+                        <label>Your tags:</label>
+                        <textarea style="width: 200px; min-height: 45px;"id="TagBox" name="TagBox"></textarea>
+                    </div>
+
+                    <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary" id="Submit">Add</button>
                 </form>
             </div>
         </div>
@@ -37,17 +57,26 @@
         </div>
     </div>
 </div>
-<script src="~/Scripts/jquery-1.10.2.js"></script>
-<script src="~/Scripts/jquery.validate.js"></script>
-<script src="~/Scripts/app/jquery-validate-defaults.js"></script>
-<script src="~/Scripts/app/addPostValidation.js"></script>
 
-@*<script type="text/javascript">
-    $(document).ready(function() {
-        $("#addPost").on("submit", function() {
-            if (!$(this).valid()) {
-                return false;
-            }
-        });
-    });
-</script>*@
+
+    @*<script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/app/jquery-validate-defaults.js"></script>
+    <script src="~/Scripts/app/addPostValidation.js"></script>*@    
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>   
+    <script type="text/javascript" src="~/Scripts/textext.core.js"></script>
+    <script src="~/Scripts/textext.plugin.tags.js"></script>
+    <script src="~/Scripts/textext.plugin.autocomplete.js"></script>
+<script src="~/Scripts/textext.plugin.suggestions.js"></script>
+<script>
+    var Hashtags = [];
+    var HashtagObjects = @Html.Raw(Json.Encode(Model.Tags));
+    for (var tag in HashtagObjects) {
+        Hashtags.push(HashtagObjects[tag].TagName);
+    }
+</script>
+    <script src="~/Scripts/textext.plugin.filter.js"></script>
+    <script src="~/Scripts/textext.plugin.focus.js"></script>
+    <script src="~/Scripts/textext.plugin.prompt.js"></script>
+    <script src="~/Scripts/textext.plugin.ajax.js"></script>
+    <script src="~/Scripts/textext.plugin.arrow.js"></script>
+    <script src="~/Scripts/Hashtags.js"></script>

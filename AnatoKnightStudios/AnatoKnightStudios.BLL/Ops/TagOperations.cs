@@ -17,5 +17,27 @@ namespace AnatoknightStudios.BLL.Ops
             var tags = tagRepo.GetAllTags();
             return tags;
         }
+
+        public Tag GetTagByName(string tagName)
+        {
+            var tag = new Tag();
+            var tagRepo = new TagRepo();
+            return tagRepo.GetTagByName(tagName);
+        }
+
+        public int AddTag(Tag tag)
+        {
+            var tagRepo = new TagRepo();
+            Tag checkedTag = GetTagByName(tag.TagName);
+            if (checkedTag == null)
+            {                
+                return tagRepo.AddTag(tag);
+            }
+            else
+            {
+                tagRepo.IncrementTagPopularity(checkedTag);
+                return checkedTag.TagId;
+            }
+        }
     }
 }
