@@ -22,8 +22,6 @@
                 <p>
                     <h3 style="color: blue">Hello there, please enter your blog post!</h3>
                 </p>
-
-                <form action="/Blog/AddPost" method="post" id="addPost">
                     <div class="form-group">
                         <label>Post Title</label>
                         <input type="text" id="PostTitle" name="PostTitle"/>
@@ -31,7 +29,7 @@
 
                     <div class="form-group">
                         <label>Category</label>
-                        @Html.DropDownList("Categories", new SelectList(Model.Categories, "CategoryId", "CategoryName"), null, new {@id = "CategoryId"});
+                        @Html.DropDownList("Categories", new SelectList(Model.Categories, "CategoryId", "CategoryName"), null, new {@id = "CategoryId"})
                     </div>
 
                     <div id="formId">
@@ -50,7 +48,6 @@
 
                     <button class="btn btn-default" data-dismiss="modal">Cancel</button>
                     <button class="btn btn-primary" id="Submit">Add</button>
-                </form>
             </div>
         </div>
         <div class="modal-footer">

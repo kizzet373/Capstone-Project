@@ -14,17 +14,50 @@ namespace AnatoknightStudios.BLL.Ops
 
         public List<Post> GetAllPosts()
         {
-            return _repo.GetAllPosts();
+            var posts = _repo.GetAllPosts();
+            var tagRepo = new TagRepo();
+            foreach (Post post in posts)
+            {
+                post.PostTags = _repo.GetPostTagsByPostId(post.PostId);
+                foreach (Tag tag in post.PostTags)
+                {
+                    var currentTag = tagRepo.GetTagById(tag.TagId);
+                    tag.TagName = currentTag.TagName;
+                    tag.TagPopularity = currentTag.TagPopularity;
+                }
+            }
+            return posts;
         }
 
         public Post GetPostById(int postId)
         {
-            return _repo.GetPostById(postId);
+            var post = _repo.GetPostById(postId);
+            var tagRepo = new TagRepo();
+            post.PostTags = _repo.GetPostTagsByPostId(post.PostId);
+            foreach (Tag tag in post.PostTags)
+            {
+                var currentTag = tagRepo.GetTagById(tag.TagId);
+                tag.TagName = currentTag.TagName;
+                tag.TagPopularity = currentTag.TagPopularity;
+            }
+            return post;
         }
 
-        public List<Post> GetPostByBlogId(int blogId)
+        public List<Post> GetPostsByBlogId(int blogId)
         {
-            return _repo.GetPostsByBlogId(blogId);
+            var posts = _repo.GetPostsByBlogId(blogId);
+            var tagRepo = new TagRepo();
+            foreach (Post post in posts)
+            {
+                post.PostTags = _repo.GetPostTagsByPostId(post.PostId);
+                foreach (Tag tag in post.PostTags)
+                {
+                    var currentTag = tagRepo.GetTagById(tag.TagId);
+                    tag.TagName = currentTag.TagName;
+                    tag.TagPopularity = currentTag.TagPopularity;
+                }
+            }
+            return posts;
         } 
 
         public List<Post> GetPostByCategory(int categoryId)
