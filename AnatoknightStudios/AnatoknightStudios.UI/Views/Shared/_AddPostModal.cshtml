@@ -31,7 +31,7 @@
 
                     <div class="form-group">
                         <label>Category</label>
-                        @Html.DropDownList("Categories", new SelectList(Model.Categories, "CategoryId", "CategoryName"), null, new {@id="CategoryId"});
+                        @Html.DropDownList("Categories", new SelectList(Model.Categories, "CategoryId", "CategoryName"), null, new {@id = "CategoryId"});
                     </div>
 
                     <div id="formId">
@@ -39,7 +39,7 @@
                         <br/>
                     </div>
                     <div>
-                        <input type="hidden" id="BlogId" name="BlogId" />
+                        <input type="hidden" id="BlogId" name="BlogId"/>
                     </div>
 
                     <h2>Hashtags</h2>
@@ -58,12 +58,11 @@
     </div>
 </div>
 
-
-    @*<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@*<script src="~/Scripts/jquery.validate.js"></script>
     <script src="~/Scripts/app/jquery-validate-defaults.js"></script>
-    <script src="~/Scripts/app/addPostValidation.js"></script>*@    
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>   
-    <script type="text/javascript" src="~/Scripts/textext.core.js"></script>
+    <script src="~/Scripts/app/addPostValidation.js"></script>*@  
+<script type="text/javascript" src="~/Scripts/textext.core.js"></script>
     <script src="~/Scripts/textext.plugin.tags.js"></script>
     <script src="~/Scripts/textext.plugin.autocomplete.js"></script>
 <script src="~/Scripts/textext.plugin.suggestions.js"></script>
