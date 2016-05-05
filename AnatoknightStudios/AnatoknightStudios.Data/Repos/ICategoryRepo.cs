@@ -7,9 +7,9 @@ using AnatoknightStudios.Models;
 
 namespace AnatoknightStudios.Data.Repos
 {
-    public interface ITagRepo
+    public interface ICategoryRepo
     {
-        List<Tag> GetAllTags();
-        Tag GetTagByName(string tagName);
+        List<Category> GetAllActiveCategories();
+        Category GetCategoryById(int id);
     }
 }

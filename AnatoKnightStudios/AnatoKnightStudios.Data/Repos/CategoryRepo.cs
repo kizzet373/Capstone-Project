@@ -16,8 +16,11 @@ namespace AnatoknightStudios.Data.Repos
         private string conn;
 
         public CategoryRepo()
-        {
-            conn = ConfigurationManager.ConnectionStrings["AnatoknightStudios"].ConnectionString;
+        {   // production
+            //conn = ConfigurationManager.ConnectionStrings["AnatoknightStudios"].ConnectionString;
+
+            // test
+            conn = ConfigurationManager.ConnectionStrings["AnatoknightStudiosTests"].ConnectionString;
         }
 
         public List<Category> GetAllActiveCategories()
