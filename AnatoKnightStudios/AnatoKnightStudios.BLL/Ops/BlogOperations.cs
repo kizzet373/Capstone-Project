@@ -40,8 +40,17 @@ namespace AnatoknightStudios.BLL.Ops
         public Post Add(Post post, string userId)
         {
             post.PostDate = DateTime.Now;
-            _repo.Add(post, userId);
+            post.PostId = _repo.Add(post, userId);
+            AddPostTags(post);
             return post;
+        }
+
+        public void AddPostTags(Post post)
+        {
+            foreach (Tag tag in post.PostTags)
+            {
+                _repo.AddPostTag(post.PostId, tag);
+            }            
         }
 
         public void Delete(int postId)

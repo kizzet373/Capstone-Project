@@ -18,10 +18,10 @@ namespace AnatoknightStudios.Data.Repos
         public BlogRepo()
         {
             // production
-            //conn = ConfigurationManager.ConnectionStrings["AnatoknightStudios"].ConnectionString;
+            conn = ConfigurationManager.ConnectionStrings["AnatoknightStudios"].ConnectionString;
 
             // test
-            conn = ConfigurationManager.ConnectionStrings["AnatoknightStudiosTests"].ConnectionString;
+            //conn = ConfigurationManager.ConnectionStrings["AnatoknightStudiosTests"].ConnectionString;
 
         }
 
@@ -34,7 +34,7 @@ namespace AnatoknightStudios.Data.Repos
         {
             using (var _cn = new SqlConnection(conn))
             {
-                var posts = _cn.Query<Post>("SELECT * FROM Post ").ToList();
+                var posts = _cn.Query<Post>("SELECT * FROM Post").ToList();
                 return posts;
             }
         }
@@ -94,7 +94,7 @@ namespace AnatoknightStudios.Data.Repos
             }
         }
 
-        public void Add(Post post, string userId)
+        public int Add(Post post, string userId)
         {
             using (var _cn = new SqlConnection(conn))
             {
@@ -113,7 +113,27 @@ namespace AnatoknightStudios.Data.Repos
                 string query = "INSERT INTO Post (CategoryId,  BlogId, PostDate, PostTitle, " +
                                "PostContent, IsActive, Votes, AspNetUserId, PostStatus) " +
                                "VALUES (@CategoryId, @BlogId, @PostDate, @PostTitle, @PostContent, " +
-                               "@IsActive, @Votes, @AspNetUserId, @PostStatus) ";
+                               "@IsActive, @Votes, @AspNetUserId, @PostStatus) " +
+                               "SELECT CAST(SCOPE_IDENTITY() as int)";
+                var id = _cn.Query<int>(query, parameters).Single();
+
+                _cn.Execute(query, parameters);
+
+                return id;
+            }
+        }
+
+        public void AddPostTag(int postId, Tag tag)
+        {
+            using (var _cn = new SqlConnection(conn))
+            {
+                var parameters = new DynamicParameters();
+                
+                parameters.Add("postId", postId);
+                parameters.Add("tagId", tag.TagId);
+
+                string query = "INSERT INTO Post_Tag (PostId, TagId) " +
+                               "VALUES (@postId, @tagId) ";
 
                 _cn.Execute(query, parameters);
             }

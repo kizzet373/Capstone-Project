@@ -20,7 +20,6 @@ namespace AnatoknightStudios.BLL.Ops
 
         public Tag GetTagByName(string tagName)
         {
-            var tag = new Tag();
             var tagRepo = new TagRepo();
             return tagRepo.GetTagByName(tagName);
         }

@@ -82,12 +82,12 @@ namespace AnatoknightStudios.UI.Controllers
 
             foreach (Tag tag in post.PostTags)
             {
-                tagOps.AddTag(tag);
+                int tagId = tagOps.AddTag(tag);
+                tag.TagId = tagId;
             }
 
             var ops = new BlogOperations();
             ops.Add(post, User.Identity.GetUserId());
-            //_repo.Add(post);
             if (post.BlogId == 1)
             {
                 return RedirectToAction("AdminBlog");

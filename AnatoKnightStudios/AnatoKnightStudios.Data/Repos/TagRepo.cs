@@ -51,9 +51,7 @@ namespace AnatoknightStudios.Data.Repos
                 string query = "INSERT INTO Tag (TagName, TagPopularity) " +
                                "VALUES (@TagName, 0) " +
                                "SELECT CAST(SCOPE_IDENTITY() as int)";
-                var id = _cn.Query<int>(query, parameters).Single();
-
-                _cn.Execute(query, parameters);
+                var id = _cn.Query<int>(query, parameters).Single();               
 
                 return id;
             }
