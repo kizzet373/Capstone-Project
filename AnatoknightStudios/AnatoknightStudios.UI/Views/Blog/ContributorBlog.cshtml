@@ -73,11 +73,11 @@
                                 {
                                     if (post.PostStatus == "Open" || post.PostStatus == "Revised")
                                     {
-                                        @Html.ActionLink("Approve", "ApprovePost", new { postId = post.PostId }, new { @class = "btn btn-success btn-sm" })
+                                        @Html.ActionLink("Approve", "ApprovePost", new {postId = post.PostId}, new {@class = "btn btn-success btn-sm"})
                                     }
                                     if (post.PostStatus == "Open")
                                     {
-                                        @Html.ActionLink("Revise", "RequestRevision", new { postId = post.PostId }, new { @class = "btn btn-success btn-sm" })
+                                        @Html.ActionLink("Revise", "RequestRevision", new {postId = post.PostId}, new {@class = "btn btn-success btn-sm"})
                                     }
                                 }
                             </div>
@@ -93,8 +93,9 @@
                     <td id="contributorPosts" onclick='location.href = "@Url.Action("PostDetails", "Blog", new {id = @post.PostId})"'>
                         <div>
                             <span>@post.PostDate</span>
-                            <div align="right"><b>Published by: @post.FirstName @post.LastName</b></div>
-                        </div>                                                
+                            <div align="right"><b>Published by: @post.FirstName @post.LastName</b>
+                            </div>
+                        </div>
                         <h4 align="center">@post.PostTitle</h4>
                     </td>
                 </tr>
@@ -109,14 +110,14 @@
             <tr>
                 <strong><td>Tags</td></strong>
             </tr>
-            @using (Html.BeginForm("ContributorBlog", "Blog", FormMethod.Post, new {@class = "form-group"}))
+            @using (Html.BeginForm("ContributorBlog", "Blog", FormMethod.Post, new { @class = "form-group" }))
             {
-                foreach (Tag tag in @Model.Blog.Tags)
+                var tags = Model.Blog.Tags.OrderByDescending(x => x.TagPopularity).Take(10);
+                foreach (Tag tag in tags)
                 {
-                    <tr>
-                        @*@<td>@Html.CheckBoxFor("")</td>*@
-                        <td>@tag.TagName</td>
-                    </tr>
+                        <tr>
+                            <td><label><input type="checkbox" onchange="toggleCheckbox(this)" />@tag.TagName</label></td>
+                        </tr>
                 }
                 <tr><td><button class="btn btn-primary" type="submit">Search</button></td></tr>
             }
