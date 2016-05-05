@@ -18,10 +18,10 @@ namespace AnatoknightStudios.Data.Repos
         public BlogRepo()
         {
             // production
-            conn = ConfigurationManager.ConnectionStrings["AnatoknightStudios"].ConnectionString;
+            //conn = ConfigurationManager.ConnectionStrings["AnatoknightStudios"].ConnectionString;
 
             // test
-            //conn = ConfigurationManager.ConnectionStrings["AnatoknightStudiosTests"].ConnectionString;
+            conn = ConfigurationManager.ConnectionStrings["AnatoknightStudiosTests"].ConnectionString;
 
         }
 

@@ -27,6 +27,7 @@ namespace AnatoknightStudios.Tests
 
         private string _script;
         private BlogRepo _repo = new BlogRepo();
+        private TagRepo _tagRepo = new TagRepo();
 
         private string AssemblyLocation()
         {
@@ -110,5 +111,15 @@ namespace AnatoknightStudios.Tests
             var result = _repo.GetPostsByBlogId(blogId).Count;
             Assert.AreEqual(expectedResult, result);
         }
+
+        [Test]
+        public void GetAllTags()
+        {
+            var target = _tagRepo;
+            var expected = 3;
+            var actual = target.GetAllTags().Count;
+            Assert.AreEqual(actual, expected);
+        }
+
     }
 }
