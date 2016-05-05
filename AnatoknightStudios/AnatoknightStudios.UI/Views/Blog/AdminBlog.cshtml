@@ -113,13 +113,13 @@
                     <tr>
                         <strong><td>Tags</td></strong>
                     </tr>
-                    @using (Html.BeginForm("ContributorBlog", "Blog", FormMethod.Post, new { @class = "form-group" }))
+                    @using (Html.BeginForm("ContributorBlog", "Blog", FormMethod.Post, new {@class = "form-group"}))
                     {
-                        foreach (Tag tag in @Model.Blog.Tags)
+                        var tags = Model.Blog.Tags.OrderByDescending(x => x.TagPopularity).Take(10);
+                        foreach (Tag tag in tags)
                         {
                             <tr>
-                                @*@<td>@Html.CheckBoxFor("")</td>*@
-                                <td>@tag.TagName</td>
+                                <td><label><input type="checkbox" onchange="toggleCheckbox(this)"/>@tag.TagName</label></td>
                             </tr>
                         }
                         <tr><td><button class="btn btn-primary" type="submit">Search</button></td></tr>
