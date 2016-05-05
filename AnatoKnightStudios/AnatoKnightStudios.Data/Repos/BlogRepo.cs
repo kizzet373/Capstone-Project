@@ -97,7 +97,7 @@ namespace AnatoknightStudios.Data.Repos
 
         public List<Tag> GetPostTagsByPostId(int id)
         {
-            using (var _cn = new SqlConnection(conn))
+            using (var _cn = new SqlConnection(_conn))
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("ID", id);
