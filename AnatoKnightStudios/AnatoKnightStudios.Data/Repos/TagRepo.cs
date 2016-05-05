@@ -43,6 +43,17 @@ namespace AnatoknightStudios.Data.Repos
             }
         }
 
+        public Tag GetTagById(int id)
+        {
+            using (var _cn = new SqlConnection(_conn))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("id", id);
+                var tag = _cn.Query<Tag>(@"SELECT * FROM Tag WHERE Tag.TagId = @id", parameters).FirstOrDefault();
+                return tag;
+            }
+        }
+
 
         public int AddTag(Tag tag)
         {

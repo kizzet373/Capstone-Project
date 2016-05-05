@@ -22,7 +22,7 @@ namespace AnatoknightStudios.UI.Controllers
 
             var blogOps = new BlogOperations();
             var blogVm = new BlogVm() {Blog = new Blog() {BlogId = 1} };
-            blogVm.Blog.Posts = blogOps.GetPostByBlogId(blogVm.Blog.BlogId);
+            blogVm.Blog.Posts = blogOps.GetPostsByBlogId(blogVm.Blog.BlogId);
 
             if (categoryId != null)
             {
@@ -48,7 +48,7 @@ namespace AnatoknightStudios.UI.Controllers
         {
             var blogOps = new BlogOperations();
             var blogVm = new BlogVm() { Blog = new Blog() { BlogId = 2 } };
-            blogVm.Blog.Posts = blogOps.GetPostByBlogId(blogVm.Blog.BlogId);
+            blogVm.Blog.Posts = blogOps.GetPostsByBlogId(blogVm.Blog.BlogId);
 
             if (categoryId != null)
             {
@@ -91,8 +91,11 @@ namespace AnatoknightStudios.UI.Controllers
             if (post.BlogId == 1)
             {
                 return RedirectToAction("AdminBlog");
-            }           
-            return RedirectToAction("ContributorBlog");
+            }
+            else
+            {
+                return RedirectToAction("ContributorBlog");
+            }
         }
 
         // GET: Details of post
@@ -153,21 +156,49 @@ namespace AnatoknightStudios.UI.Controllers
             return RedirectToAction("AdminBlog");
         }
 
-        //// POST: Create a new post
-        //[HttpPost]
-        //[Authorize(Roles = "Admin, Contributor")]
-        //public ActionResult Add(Post post)
-        //{
-        //    // hardcoding values
-        //    post.IsActive = true;
-        //    post.CategoryId = 1;
-        //    post.BlogId = 1;
-        //    post.Votes = 40;
+        public ActionResult ApprovePost(int postId)
+        {
+            var ops = new BlogOperations();
+            var post = ops.GetPostById(postId);
+            post.IsActive = true;
+            post.Votes = 0;
+            post.PostStatus = "Approved";
+            post.BlogId = 1;
 
-        //    var ops = new BlogOperations();
-        //    ops.Add(post, User.Identity.GetUserId());
-        //    //_repo.Add(post);
-        //    return RedirectToAction("AdminBlog");
-        //}
-    }
+            var tagOps = new TagOperations();
+
+            foreach (Tag tag in post.PostTags)
+            {
+                int tagId = tagOps.AddTag(tag);
+                tag.TagId = tagId;
+            }
+            ops.Add(post, User.Identity.GetUserId());
+            return RedirectToAction("AdminBlog");
+        }
+
+        public ActionResult RequestRevision(int postId)
+        {
+            var ops = new BlogOperations();
+            var post = ops.GetPostById(postId);
+            post.PostStatus = "PendingRevision";
+            return RedirectToAction("ContributorBlog");
+        }
+
+        //// POST: Create a new post
+            //[HttpPost]
+            //[Authorize(Roles = "Admin, Contributor")]
+            //public ActionResult Add(Post post)
+            //{
+            //    // hardcoding values
+            //    post.IsActive = true;
+            //    post.CategoryId = 1;
+            //    post.BlogId = 1;
+            //    post.Votes = 40;
+
+            //    var ops = new BlogOperations();
+            //    ops.Add(post, User.Identity.GetUserId());
+            //    //_repo.Add(post);
+            //    return RedirectToAction("AdminBlog");
+            //}
+        }
 }

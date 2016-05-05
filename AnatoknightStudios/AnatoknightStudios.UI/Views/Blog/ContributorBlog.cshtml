@@ -25,7 +25,7 @@
         <div class="GrayDiv" style="height: 50px;">
             <table>
                 <tr>
-                    <td><button type="button" class="btn-primary btn-med" style="margin: 10px;" onclick='location.href = "@Url.Action("ContributorBlog", "Blog", null)"'>All Games</button></td>
+                    <td><button type="button" class="btn-primary btn-med" style="margin: 10px;" onclick='location.href = "@Url.Action("ContributorBlog", "Blog", null)"'>All Genres</button></td>
                     @foreach (Category category in @Model.Blog.Categories)
                     {
                         <td><button type="button" class="btn-primary btn-med" style="margin: 10px;" onclick='location.href = "@Url.Action("ContributorBlog", "Blog", new {categoryId = @category.CategoryId})"'>@category.CategoryName</button></td>
@@ -71,8 +71,14 @@
 
                                 @if (User.IsInRole("Admin"))
                                 {
-                                    @Html.ActionLink("Approve", "EditPost", new {id = post.PostId}, new {@class = "btn btn-success btn-sm"})
-                                    <button id="btnShowDeletePost" class="btn btn-success btn-sm btnShowDeletePost">revise</button>
+                                    if (post.PostStatus == "Open" || post.PostStatus == "Revised")
+                                    {
+                                        @Html.ActionLink("Approve", "ApprovePost", new { postId = post.PostId }, new { @class = "btn btn-success btn-sm" })
+                                    }
+                                    if (post.PostStatus == "Open")
+                                    {
+                                        @Html.ActionLink("Revise", "RequestRevision", new { postId = post.PostId }, new { @class = "btn btn-success btn-sm" })
+                                    }
                                 }
                             </div>
                         }

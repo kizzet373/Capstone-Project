@@ -47,6 +47,7 @@ namespace AnatoknightStudios.Data.Repos
                 parameters.Add("ID", id);
                 var post = _cn.Query<Post>(@"Select Post.*,AspNetUsers.FirstName,AspNetUsers.LastName 
                                             From Post inner join AspNetUsers on AspNetUsers.Id = Post.AspNetUserId 
+                                            INNER JOIN Post_Tag on Post_Tag.PostId = Post.PostId                                             
                                             Where Post.PostId = @ID", parameters).FirstOrDefault();
                 return post;
             }
@@ -94,6 +95,20 @@ namespace AnatoknightStudios.Data.Repos
             }
         }
 
+        public List<Tag> GetPostTagsByPostId(int id)
+        {
+            using (var _cn = new SqlConnection(_conn))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("ID", id);
+
+                var tags = _cn.Query<Tag>(@"Select * 
+                                            From Post_Tag 
+                                            Where PostId = @ID ", parameters).ToList();
+                return tags;
+            }
+        } 
+
         public int Add(Post post, string userId)
         {
             using (var _cn = new SqlConnection(_conn))
@@ -116,8 +131,6 @@ namespace AnatoknightStudios.Data.Repos
                                "@IsActive, @Votes, @AspNetUserId, @PostStatus) " +
                                "SELECT CAST(SCOPE_IDENTITY() as int)";
                 var id = _cn.Query<int>(query, parameters).Single();
-
-                _cn.Execute(query, parameters);
 
                 return id;
             }
