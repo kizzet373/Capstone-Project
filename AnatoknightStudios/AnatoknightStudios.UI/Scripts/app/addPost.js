@@ -1,4 +1,5 @@
-﻿$(document).ready(function() {
+﻿/// <reference path="addPost.js" />
+$(document).ready(function() {
     $('#btnShowAddPost').click(function() {
         $('#addPostModal').modal('show');
         $('#BlogId').val($(this).siblings("input").val());
