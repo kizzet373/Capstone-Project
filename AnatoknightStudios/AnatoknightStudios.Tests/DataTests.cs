@@ -21,49 +21,48 @@ namespace AnatoknightStudios.Tests
         // Mock Repo
         //private MockRepo _repo = new MockRepo();
 
-        private IBlogRepo _repo;
+        private readonly string _conn = ConfigurationManager.ConnectionStrings["AnatoknightStudiosTests"].ConnectionString;
+
+        private string _script;
+        private BlogRepo _repo = new BlogRepo();
 
         private string AssemblyLocation()
         {
             //var assembly = Assembly.GetExecutingAssembly();
             var assembly = typeof (DataTests).Assembly; //Gets assembly by class name
             var codebase = new Uri(assembly.CodeBase);
-            var path = codebase.LocalPath.Substring(0, codebase.LocalPath.LastIndexOf("\\", StringComparison.Ordinal) + 1);
+            var path = codebase.LocalPath.Substring(0, 
+                codebase.LocalPath.LastIndexOf("\\", StringComparison.Ordinal) + 1);
             return path;
         }
 
-        [OneTimeSetUp]
+        [SetUp]
         public void setup()
         {
-            _repo = new BlogRepo(ConfigurationManager.ConnectionStrings["AnatoknightStudiosTests"].ConnectionString);
-            using (SqlConnection sqlConn = new SqlConnection())
+            using (SqlConnection sqlConn = new SqlConnection(_conn))
             {
-                string SeedData = File.ReadAllText("\\SeedData.sql");
+                _script = File.ReadAllText(AssemblyLocation() + "\\SeedData.sql");
                 
-                SqlCommand cmd = new SqlCommand(SeedData,sqlConn);
+                SqlCommand cmd = new SqlCommand(_script, sqlConn);
+                sqlConn.Open();
                 cmd.ExecuteNonQuery();
             }
         }
 
-        [OneTimeTearDown]
+        [TearDown]
         public void teardown()
         {
-            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["AnatoknightStudiosTests"].ConnectionString))
+            using (SqlConnection sqlConn = new SqlConnection(_conn))
             {
-                var script = File.ReadAllText(_repo + "teardown.sql");
-                SqlCommand cmd = new SqlCommand(script, cn);
-                try
-                {
-                    cn.Open();
+                _script = File.ReadAllText(AssemblyLocation() + "\\teardown.sql");
+                SqlCommand cmd = new SqlCommand(_script, sqlConn);
 
-                    cmd.ExecuteNonQuery();
-                }
-                catch (Exception e)
-                {
+                sqlConn.Open();
 
-                }
+                cmd.ExecuteNonQuery();
             }
         }
+
         [Test]
         public void GetAllPosts()
         {
@@ -74,7 +73,6 @@ namespace AnatoknightStudios.Tests
 
         }
 
-        // For Mock Repo
         [TestCase(2, 2)]
         public void GetPostById(int postId, int expectedPost)
         {
@@ -83,8 +81,7 @@ namespace AnatoknightStudios.Tests
             Assert.AreEqual(expectedPost, post.PostId);
 
         }
-
-        // For Mock Repo
+        
         [TestCase(3, 1)]
         public void GetPostByCategory(int categoryId, int expectedId)
         {
