@@ -13,26 +13,26 @@ namespace AnatoknightStudios.Data.Repos
 {
     public class BlogRepo : IBlogRepo
     {
-        private string conn;
+        private string _conn;
 
         public BlogRepo()
         {
             // production
-            conn = ConfigurationManager.ConnectionStrings["AnatoknightStudios"].ConnectionString;
+            _conn = ConfigurationManager.ConnectionStrings["AnatoknightStudios"].ConnectionString;
 
             // test
-            //conn = ConfigurationManager.ConnectionStrings["AnatoknightStudiosTests"].ConnectionString;
+            //_conn = ConfigurationManager.ConnectionStrings["AnatoknightStudiosTests"].ConnectionString;
 
         }
 
         public BlogRepo(string connectionString)
         {
-            conn = connectionString;
+            _conn = connectionString;
         }
 
         public List<Post> GetAllPosts()
         {
-            using (var _cn = new SqlConnection(conn))
+            using (var _cn = new SqlConnection(_conn))
             {
                 var posts = _cn.Query<Post>("SELECT * FROM Post").ToList();
                 return posts;
@@ -41,7 +41,7 @@ namespace AnatoknightStudios.Data.Repos
 
         public Post GetPostById(int id)
         {
-            using (var _cn = new SqlConnection(conn))
+            using (var _cn = new SqlConnection(_conn))
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("ID", id);
@@ -55,7 +55,7 @@ namespace AnatoknightStudios.Data.Repos
 
         public List<Post> GetPostsByCategory(int id)
         {
-            using (var _cn = new SqlConnection(conn))
+            using (var _cn = new SqlConnection(_conn))
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("ID", id);
@@ -69,7 +69,7 @@ namespace AnatoknightStudios.Data.Repos
 
         public List<Post> GetPostsByTag(int id)
         {
-            using (var _cn = new SqlConnection(conn))
+            using (var _cn = new SqlConnection(_conn))
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("ID", id);
@@ -83,7 +83,7 @@ namespace AnatoknightStudios.Data.Repos
 
         public List<Post> GetPostsByBlogId(int id)
         {
-            using (var _cn = new SqlConnection(conn))
+            using (var _cn = new SqlConnection(_conn))
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("ID", id);
@@ -111,7 +111,7 @@ namespace AnatoknightStudios.Data.Repos
 
         public int Add(Post post, string userId)
         {
-            using (var _cn = new SqlConnection(conn))
+            using (var _cn = new SqlConnection(_conn))
             {
                 var parameters = new DynamicParameters();
 
@@ -138,7 +138,7 @@ namespace AnatoknightStudios.Data.Repos
 
         public void AddPostTag(int postId, Tag tag)
         {
-            using (var _cn = new SqlConnection(conn))
+            using (var _cn = new SqlConnection(_conn))
             {
                 var parameters = new DynamicParameters();
                 
@@ -154,7 +154,7 @@ namespace AnatoknightStudios.Data.Repos
 
         public void Delete(int postId)
         {
-            using (var _cn = new SqlConnection(conn))
+            using (var _cn = new SqlConnection(_conn))
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("PostId", postId);
@@ -165,7 +165,7 @@ namespace AnatoknightStudios.Data.Repos
 
         public void Edit(int postId, Post post)
         {
-            using (var _cn = new SqlConnection(conn))
+            using (var _cn = new SqlConnection(_conn))
             {
                 var parameters = new DynamicParameters();
 

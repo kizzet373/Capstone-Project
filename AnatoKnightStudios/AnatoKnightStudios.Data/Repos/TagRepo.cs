@@ -10,13 +10,17 @@ using Dapper;
 
 namespace AnatoknightStudios.Data.Repos
 {
-    public class TagRepo
+    public class TagRepo : ITagRepo
     {
         private string _conn;
 
         public TagRepo()
         {
+            // production
             _conn = ConfigurationManager.ConnectionStrings["AnatoknightStudios"].ConnectionString;
+
+            // test
+            //_conn = ConfigurationManager.ConnectionStrings["AnatoknightStudiosTests"].ConnectionString;
         }
 
         public List<Tag> GetAllTags()

@@ -50,6 +50,8 @@
     <Compile Include="Repos\BlogRepo.cs" />
     <Compile Include="Repos\CategoryRepo.cs" />
     <Compile Include="Repos\IBlogRepo.cs" />
+    <Compile Include="Repos\ICategoryRepo.cs" />
+    <Compile Include="Repos\ITagRepo.cs" />
     <Compile Include="Repos\StaticPageRepo.cs" />
     <Compile Include="Repos\TagRepo.cs" />
   </ItemGroup>

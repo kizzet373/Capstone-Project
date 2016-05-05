@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AnatoknightStudios.Data;
 using AnatoknightStudios.Data.Repos;
+
 using AnatoknightStudios.Models;
 using NUnit.Framework;
 
@@ -27,6 +28,8 @@ namespace AnatoknightStudios.Tests
 
         private string _script;
         private BlogRepo _repo = new BlogRepo();
+        private TagRepo _tagRepo = new TagRepo();
+        private CategoryRepo _categoryRepo = new CategoryRepo();
 
         private string AssemblyLocation()
         {
@@ -65,6 +68,7 @@ namespace AnatoknightStudios.Tests
             }
         }
 
+        // BlogRepo Test
         [Test]
         public void GetAllPosts()
         {
@@ -108,6 +112,47 @@ namespace AnatoknightStudios.Tests
         public void GetPostCountsByBlogId(int blogId, int expectedResult)
         {
             var result = _repo.GetPostsByBlogId(blogId).Count;
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        // TagRepo Test
+        [Test]
+        public void GetAllTags()
+        {
+            var target = _tagRepo;
+            var expected = 3;
+            var actual = target.GetAllTags().Count;
+            Assert.AreEqual(actual, expected);
+        }
+
+        [TestCase("Bleh", 1)]
+        public void GetTagIdByTagName(string tagName, int expectedResult)
+        {
+            var result = _tagRepo.GetTagByName(tagName).TagId;
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [TestCase("Blah", 2)]
+        public void GetTagPopularityByTagName(string tagName, int expectedResult)
+        {
+            var result = _tagRepo.GetTagByName(tagName).TagPopularity;
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        // CategoryRepo Test
+        [Test]
+        public void GetAllCategories()
+        {
+            var target = _categoryRepo;
+            var expected = 4;
+            var actual = target.GetAllActiveCategories().Count;
+            Assert.AreEqual(actual, expected);
+        }
+
+        [TestCase(3, "Game 3")]
+        public void GetCategoryNameByCategoryId(int categoryId, string expectedResult)
+        {
+            var result = _categoryRepo.GetCategoryById(categoryId).CategoryName;
             Assert.AreEqual(expectedResult, result);
         }
     }
