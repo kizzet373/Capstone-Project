@@ -6,71 +6,71 @@
 }
 
 <h2>Details of Post</h2>
+<div class="BlackDiv" style="border-radius: 10px; padding: 20px; margin: 20px;">
+    <div class="GrayDiv" style="padding: 10px; border-radius: 20px;">
+        <dl class="dl-horizontal">
 
-<div class="GrayDiv">
-    <hr />
-    <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PostDate)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PostDate)
-        </dt>
+            <dd>
+                @*@Html.DisplayFor(model => model.PostDate)*@
+                @Model.PostDate.ToString("MM-dd-yyyy")
+            </dd>
 
-        <dd>
-            @*@Html.DisplayFor(model => model.PostDate)*@
-            @Model.PostDate.ToString("MM-dd-yyyy")
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PostTitle)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PostTitle)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PostTitle)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PostTitle)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PostContent)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PostContent)
-        </dt>
+            <dd>
+                @*@Html.DisplayFor(model => model.PostContent)*@
+                @Html.Raw(Model.PostContent)
+            </dd>
 
-        <dd>
-            @*@Html.DisplayFor(model => model.PostContent)*@
-            @Html.Raw(Model.PostContent)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Votes)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Votes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Votes)
-        </dd>
-        <dt>
-            Tags:
-        </dt>
-        <dd>
-            @foreach (Tag tag in @Model.PostTags)
+            <dd>
+                @Html.DisplayFor(model => model.Votes)
+            </dd>
+            <dt>
+                Tags:
+            </dt>
+            <dd>
+                @foreach (Tag tag in @Model.PostTags)
             {
-                <span>@tag.TagName </span>
-            }
-        </dd>
+                    <span>@tag.TagName </span>
+                }
+            </dd>
 
-    </dl>
+        </dl>
+    </div>
 </div>
 <p>
     @*@Html.ActionLink("Edit", "EditPost", new { id = Model.PostId }, new { @class = "btn btn-danger" })*@
