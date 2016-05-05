@@ -12,20 +12,20 @@ namespace AnatoknightStudios.Data.Repos
 {
     public class TagRepo : ITagRepo
     {
-        private string conn;
+        private string _conn;
 
         public TagRepo()
         {
             // production
-            conn = ConfigurationManager.ConnectionStrings["AnatoknightStudios"].ConnectionString;
+            _conn = ConfigurationManager.ConnectionStrings["AnatoknightStudios"].ConnectionString;
 
             // test
-            //conn = ConfigurationManager.ConnectionStrings["AnatoknightStudiosTests"].ConnectionString;
+            //_conn = ConfigurationManager.ConnectionStrings["AnatoknightStudiosTests"].ConnectionString;
         }
 
         public List<Tag> GetAllTags()
         {
-            using (var _cn = new SqlConnection(conn))
+            using (var _cn = new SqlConnection(_conn))
             {
                 var tags = _cn.Query<Tag>("SELECT * FROM Tag ").ToList();
                 return tags;
@@ -34,7 +34,7 @@ namespace AnatoknightStudios.Data.Repos
 
         public Tag GetTagByName(string tagName)
         {
-            using (var _cn = new SqlConnection(conn))
+            using (var _cn = new SqlConnection(_conn))
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("TagName", tagName);
@@ -46,7 +46,7 @@ namespace AnatoknightStudios.Data.Repos
 
         public int AddTag(Tag tag)
         {
-            using (var _cn = new SqlConnection(conn))
+            using (var _cn = new SqlConnection(_conn))
             {
                 var parameters = new DynamicParameters();
 
@@ -63,7 +63,7 @@ namespace AnatoknightStudios.Data.Repos
 
         public void IncrementTagPopularity(Tag tag)
         {
-            using (var _cn = new SqlConnection(conn))
+            using (var _cn = new SqlConnection(_conn))
             {
                 var parameters = new DynamicParameters();
 

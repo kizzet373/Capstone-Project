@@ -13,19 +13,19 @@ namespace AnatoknightStudios.Data.Repos
 {
     public class CategoryRepo
     {
-        private string conn;
+        private string _conn;
 
         public CategoryRepo()
         {   // production
-            conn = ConfigurationManager.ConnectionStrings["AnatoknightStudios"].ConnectionString;
+            _conn = ConfigurationManager.ConnectionStrings["AnatoknightStudios"].ConnectionString;
 
             // test
-            //conn = ConfigurationManager.ConnectionStrings["AnatoknightStudiosTests"].ConnectionString;
+            //_conn = ConfigurationManager.ConnectionStrings["AnatoknightStudiosTests"].ConnectionString;
         }
 
         public List<Category> GetAllActiveCategories()
         {
-            using (var _cn = new SqlConnection(conn))
+            using (var _cn = new SqlConnection(_conn))
             {                               
                 var categoryList = _cn.Query<Category>("SELECT * FROM Category " +
                                                        "WHERE Category.IsActive = 1;").ToList();
@@ -35,7 +35,7 @@ namespace AnatoknightStudios.Data.Repos
 
         public Category GetCategoryById(int id)
         {
-            using (var _cn = new SqlConnection(conn))
+            using (var _cn = new SqlConnection(_conn))
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("ID", id);
@@ -48,7 +48,7 @@ namespace AnatoknightStudios.Data.Repos
 
         public void AddCategory(Category category)
         {
-            using (var _cn = new SqlConnection(conn))
+            using (var _cn = new SqlConnection(_conn))
             {
                 var parameters = new DynamicParameters();
 
@@ -64,7 +64,7 @@ namespace AnatoknightStudios.Data.Repos
 
         public void DeleteCategoryById(int categoryId)
         {
-            using (var _cn = new SqlConnection(conn))
+            using (var _cn = new SqlConnection(_conn))
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("CategoryId", categoryId);
